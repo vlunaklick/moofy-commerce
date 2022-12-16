@@ -8,7 +8,7 @@ function Nav({}: Props) {
   const { isOpen, handleOpen, close } = useMenu()
 
   return (
-    <nav className="w-full py-4 flex flex-col md:flex-row md:justify-between md:items-center">
+    <nav className="w-full py-4 flex flex-col md:flex-row md:justify-between md:items-center relative">
       <div className="flex justify-between">
         <h1 className="font-bold text-4xl text-zinc-900">
           Moo
@@ -39,14 +39,23 @@ function Nav({}: Props) {
         </ul>
       </div>
       {isOpen && (
-        <ul className="flex flex-col md:hidden text-lg text-center">
-          <li className="p-2 cursor-pointer" onClick={() => handleOpen()}>
+        <ul className="flex flex-col md:hidden text-lg text-center absolute bg-zinc-50 w-full top-full ">
+          <li
+            className="p-3 cursor-pointer border-zinc-50 border-8"
+            onClick={() => handleOpen()}
+          >
             About
           </li>
-          <li className="p-2" onClick={() => handleOpen()}>
+          <li
+            className="p-3 cursor-pointer border-zinc-50 border-8"
+            onClick={() => handleOpen()}
+          >
             Shop
           </li>
-          <li className="p-2" onClick={() => handleOpen()}>
+          <li
+            className="p-3 cursor-pointer border-zinc-50 border-8"
+            onClick={() => handleOpen()}
+          >
             <CgShoppingCart className="inline-block text-2xl" />
           </li>
         </ul>
