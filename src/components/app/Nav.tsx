@@ -11,10 +11,12 @@ function Nav({}: Props) {
   return (
     <nav className="w-full py-4 flex flex-col md:flex-row md:justify-between md:items-center relative">
       <div className="flex justify-between">
-        <h1 className="font-bold text-4xl text-zinc-900">
-          Moo
-          <span className="text-emerald-500">fy</span>
-        </h1>
+        <Link to="/">
+          <h1 className="font-bold text-4xl text-zinc-900">
+            Moo
+            <span className="text-emerald-500">fy</span>
+          </h1>
+        </Link>
         <div>
           <CgMenu
             onClick={() => handleOpen()}
