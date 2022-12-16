@@ -21,7 +21,7 @@ const Button = ({
   return (
     <button
       className={
-        'rounded-2xl font-semibold py-2 px-5 cursor-pointer capitalize ' +
+        'rounded-2xl font-semibold py-2 px-5 cursor-pointer capitalize transition-colors ' +
         (full ? 'w-full text-center ' : 'w-fit ') +
         classes[variant]
       }
