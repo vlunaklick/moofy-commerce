@@ -8,7 +8,7 @@ function Nav({}: Props) {
   const { isOpen, handleOpen, close } = useMenu()
 
   return (
-    <nav className="w-full py-4 px-5 flex flex-col md:flex-row md:justify-between md:items-center">
+    <nav className="w-full py-4 flex flex-col md:flex-row md:justify-between md:items-center">
       <div className="flex justify-between">
         <h1 className="font-bold text-4xl text-zinc-900">
           Moo

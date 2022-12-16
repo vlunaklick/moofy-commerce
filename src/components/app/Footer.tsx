@@ -5,7 +5,7 @@ type Props = {}
 
 function Footer({}: Props) {
   return (
-    <footer className="w-full py-4 px-5 flex flex-col gap-4">
+    <footer className="w-full py-4 flex flex-col gap-4">
       <span className="w-full border border-zinc-100"></span>
       <div className="flex flex-col gap-2 md:flex-row md:justify-between">
         <div className="md:max-w-[317px]">
