@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useMenu } from '../../hooks/useMenu'
 
 import { CgMenu, CgShoppingCart } from 'react-icons/cg'
@@ -26,15 +27,21 @@ function Nav({}: Props) {
       <div>
         <ul className="hidden md:flex gap-24 text-zinc-900 font-medium">
           <li className="cursor-pointer group">
-            About
-            <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-zinc-900"></span>
+            <Link to={'/about'}>
+              About
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-zinc-900"></span>
+            </Link>
           </li>
           <li className="cursor-pointer group">
-            Shop
-            <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-zinc-900"></span>
+            <Link to={'/shop'}>
+              Shop
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-zinc-900"></span>
+            </Link>
           </li>
           <li className="cursor-pointer">
-            <CgShoppingCart className="inline-block text-2xl" />
+            <Link to={'/cart'}>
+              <CgShoppingCart className="inline-block text-2xl" />
+            </Link>
           </li>
         </ul>
       </div>
@@ -44,19 +51,21 @@ function Nav({}: Props) {
             className="p-3 cursor-pointer border-zinc-50 border-8"
             onClick={() => handleOpen()}
           >
-            About
+            <Link to={'/about'}>About</Link>
           </li>
           <li
             className="p-3 cursor-pointer border-zinc-50 border-8"
             onClick={() => handleOpen()}
           >
-            Shop
+            <Link to={'/shop'}>Shop</Link>
           </li>
           <li
             className="p-3 cursor-pointer border-zinc-50 border-8"
             onClick={() => handleOpen()}
           >
-            <CgShoppingCart className="inline-block text-2xl" />
+            <Link to={'/cart'}>
+              <CgShoppingCart className="inline-block text-2xl" />
+            </Link>
           </li>
         </ul>
       )}
