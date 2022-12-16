@@ -1,10 +1,11 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 
 type Props = {
   topText?: string
   title?: string
   message?: string
   image?: string
+  link?: string
 }
 
 const HeaderHome = ({
@@ -12,6 +13,7 @@ const HeaderHome = ({
   title = 'Title',
   message = 'message ->',
   image,
+  link = '/',
 }: Props) => {
   return (
     <div className="p-8 bg-emerald-700 rounded-xl grid grid-cols-3 md:grid-cols-4 grid-rows-1 justify-between max-h-[244px]">
@@ -26,9 +28,12 @@ const HeaderHome = ({
             {title}
           </p>
         </div>
-        <p className="text-emerald-200 font-light text-xs cursor-pointer">
+        <Link
+          to={link}
+          className="text-emerald-200 font-light text-xs cursor-pointer"
+        >
           {message}
-        </p>
+        </Link>
       </div>
       <div className="bg-emerald-800 aspect-square p-1 rounded-2xl flex items-center justify-center self-center">
         <img className="object-contain" src={image} alt="GeForce 1050Ti" />
