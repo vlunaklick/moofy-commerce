@@ -2,22 +2,36 @@ import Main from '../components/layouts/Main'
 import Sections from '../components/layouts/Sections'
 import TitleHome from '../components/sites/home/TitleHome'
 import BannerAbout from '../components/sites/about/BannerAbout'
+import FormNewsletterAbout from '../components/sites/about/FormNewsletterAbout'
+import FormAbout from '../components/sites/about/FormAbout'
 
 type Props = {}
 
 const About = (props: Props) => {
   return (
     <Main>
-      <div className="md:max-w-[750px] flex flex-col gap-6">
+      <div className="md:max-w-[750px] mx-auto flex flex-col gap-6">
         <Sections>
           <TitleHome title="About" />
           <BannerAbout />
-          <p className="text-zinc-700 text-sm md:text-base font-medium">
-            We are a ew brand created by gamers for gamers. Since we were kids
-            buying technology was very hard an now we are here to solve that. If
-            you need to build a new PC from scratch, you are in the correct
-            place.
+          <p className="text-zinc-700 text-sm md:text-base">
+            Welcome to our brand, created by gamers for gamers! As avid gamers
+            ourselves, we understand the challenges of finding and purchasing
+            the right technology. That's why we've made it our mission to make
+            it easier for you to build the perfect gaming PC from scratch. Our
+            selection of high-quality components is carefully curated to provide
+            the best possible gaming experience. If you're in need of a new PC,
+            you've come to the right place! Browse our selection today and start
+            building your dream gaming PC.
           </p>
+        </Sections>
+        <Sections>
+          <TitleHome title="Contact" />
+          <FormAbout />
+        </Sections>
+        <Sections>
+          <TitleHome title="Newsletter" />
+          <FormNewsletterAbout text={'Email'} />
         </Sections>
       </div>
     </Main>

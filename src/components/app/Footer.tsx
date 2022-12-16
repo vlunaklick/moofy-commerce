@@ -8,15 +8,15 @@ function Footer({}: Props) {
     <footer className="w-full py-8 flex flex-col gap-4">
       <span className="w-full border border-zinc-100"></span>
       <div className="flex flex-col gap-2 md:flex-row md:justify-between">
-        <div className="md:max-w-[317px]">
+        <div className="md:max-w-[317px] flex flex-col gap-1">
           <h3 className="font-bold text-xl">Moofy</h3>
           <p className="text-zinc-700 text-xs">
-            We are gaming store that sells all kind of products around the
-            world. Due to our wide range of products and sales, we are the
-            company that you are searching to improve your setup
+            Upgrade your gaming setup with us! We're a top gaming store with a
+            wide range of products and a proven track record of success. Shop
+            with us today and take your gaming to the next level.
           </p>
         </div>
-        <div className="w-full flex md:flex-col justify-center md:justify-start md:max-w-[150px]">
+        <div className="w-full flex md:flex-col justify-center md:justify-start md:max-w-[150px] gap-1">
           <h3 className="font-bold text-xl hidden md:block">About</h3>
           <ul className="text-zinc-700 text-xs underline flex flex-row gap-3 md:flex-col md:gap-1">
             <li className="hover:text-zinc-900 cursor-pointer">
@@ -30,7 +30,7 @@ function Footer({}: Props) {
             </li>
           </ul>
         </div>
-        <div className="w-full flex md:flex-col justify-center md:justify-start md:max-w-[150px]">
+        <div className="w-full flex md:flex-col justify-center md:justify-start md:max-w-[150px] gap-1">
           <h3 className="font-bold text-xl hidden md:block">Socials</h3>
           <ul className="text-zinc-700 text-xs underline flex flex-row gap-3 md:flex-col md:gap-1">
             <li className="hidden md:block hover:text-zinc-900 cursor-pointer">

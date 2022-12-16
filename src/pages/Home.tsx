@@ -16,7 +16,7 @@ const Home = (props: Props) => {
     <Main>
       <div className="md:max-w-[750px] mx-auto flex flex-col gap-6">
         <Sections>
-          <div className="text-xl gap-1 font-semibold normal-case flex flex-col md:flex-row text-zinc-900 md:text-3xl">
+          <div className="text-xl gap-1 font-semibold normal-case flex flex-col md:flex-row text-zinc-800 md:text-3xl">
             <h3>Make your setup</h3>
             <h3 className="capitalize md:normal-case">a palace</h3>
           </div>
