@@ -29,7 +29,7 @@ const FormAbout = (props: Props) => {
       </label>
       <input
         id="email"
-        className="p-2 w-full border outline-none border-zinc-200 rounded-md transition-colors hover:border-zinc-300 active:border-zinc-400 focus:border-zinc-400"
+        className="p-2 w-full border outline-none border-zinc-200 text-zinc-800 rounded-md transition-colors hover:border-zinc-300 active:border-zinc-400 focus:border-zinc-400"
         type="email"
         onChange={bindEmail}
         value={email}
@@ -39,7 +39,7 @@ const FormAbout = (props: Props) => {
       </label>
       <textarea
         id="message"
-        className="p-2 w-full border outline-none border-zinc-200 rounded-md transition-colors hover:border-zinc-300 active:border-zinc-400 focus:border-zinc-400"
+        className="p-2 w-full border outline-none border-zinc-200 text-zinc-800 rounded-md transition-colors hover:border-zinc-300 active:border-zinc-400 focus:border-zinc-400"
         rows={5}
         onChange={bindMessage}
         value={message}

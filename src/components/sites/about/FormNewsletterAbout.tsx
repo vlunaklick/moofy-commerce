@@ -26,7 +26,7 @@ const FormNewsletterAbout = ({ text = 'placeholder' }: Props) => {
       </p>
       <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
         <input
-          className="p-2 w-full border outline-none border-zinc-200 rounded-md transition-colors hover:border-zinc-300 active:border-zinc-400 focus:border-zinc-400"
+          className="p-2 w-full border outline-none border-zinc-200 text-zinc-800 rounded-md transition-colors hover:border-zinc-300 active:border-zinc-400 focus:border-zinc-400"
           placeholder={'Email'}
           type="text"
           value={email}
