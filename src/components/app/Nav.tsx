@@ -8,6 +8,8 @@ type Props = {}
 function Nav({}: Props) {
   const { isOpen, handleOpen, close } = useMenu()
 
+  console.log(isOpen)
+
   return (
     <nav className="w-full py-4 flex flex-col md:flex-row md:justify-between md:items-center relative">
       <div className="flex justify-between">
@@ -48,7 +50,7 @@ function Nav({}: Props) {
         </ul>
       </div>
       {isOpen && (
-        <ul className="flex flex-col md:hidden text-lg text-center absolute bg-zinc-50 w-full top-full ">
+        <ul className="flex flex-col md:hidden text-lg text-center absolute bg-zinc-50 w-full top-full z-50 ">
           <Link to={'/about'}>
             <li className="p-3 cursor-pointer" onClick={() => close()}>
               About
