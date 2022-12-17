@@ -28,7 +28,7 @@ const PRODUCTS = [
     description:
       'The Corsair T3 RUSH is a gaming chair designed for comfort and style. It features a racing-inspired design with a high backrest, comfortable padding, and adjustable lumbar support. The chair is made with a durable steel frame and has a weight capacity of up to 330 pounds. It has a 360-degree swivel base and is adjustable in height using a pneumatic lift. The T3 RUSH also has 4D adjustable armrests and a recline function that allows you to find the perfect seating position. The chair is upholstered in durable fabric and is available in multiple color options. It is suitable for long gaming sessions and office use.',
     category: ['peripherals', 'chairs'],
-    stock: 3,
+    stock: 1,
     rating: 4.2,
     sold: 2,
   },
@@ -84,7 +84,7 @@ const PRODUCTS = [
     description:
       'The Logitech G Pro X is a gaming headset designed for comfort and audio quality. It features a lightweight design and has ear cups with a soft memory foam padding that conforms to the shape of your ears. The headset is equipped with a detachable boom microphone that has a noise-canceling feature for clear in-game communication. It has a flexible headband and is adjustable in height to find the perfect fit. The G Pro X is compatible with PC, Mac, and gaming consoles and has a 3.5mm audio jack for easy connectivity. It is suitable for a wide range of games and can also be used for music listening and voice chat. The headset is available in black or white color options.',
     category: ['peripherals', 'microphones'],
-    stock: 5,
+    stock: 0,
     rating: 4.5,
     sold: 1,
   },
@@ -205,16 +205,22 @@ export const ItemsContext = createContext<{
   items: Product[]
   cart: ProductsBought[]
   categorys: string[]
-  addCart?: (item: Product) => void
-  removeCart?: (item: Product) => void
-  clearCart?: () => void
-  addStock?: (id: number) => void
-  removeStock?: (id: number) => void
-  restartStock?: () => void
+  addCart: (item: Product) => void
+  removeCart: (item: Product) => void
+  clearCart: () => void
+  addStock: (id: number) => void
+  removeStock: (id: number) => void
+  restartStock: () => void
 }>({
   items: [],
   cart: [],
   categorys: [],
+  addCart: () => {},
+  removeCart: () => {},
+  clearCart: () => {},
+  addStock: () => {},
+  removeStock: () => {},
+  restartStock: () => {},
 })
 
 export const ItemProvider = ({ children }: { children: React.ReactNode }) => {
@@ -264,7 +270,7 @@ export const ItemProvider = ({ children }: { children: React.ReactNode }) => {
             : cartItem
         )
       )
-    } else {
+    } else if (!itemInCart) {
       setCart([...cart, { ...item, quantity: 1 }])
     }
     localStorage.setItem('cart', JSON.stringify(cart))
