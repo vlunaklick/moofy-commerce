@@ -8,6 +8,7 @@ import About from './pages/About'
 import Shop from './pages/Shop'
 import Cart from './pages/Cart'
 import Error from './pages/Error'
+import { ItemProvider } from './context/ItemsContext'
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ItemProvider>
+      <RouterProvider router={router} />
+    </ItemProvider>
   </React.StrictMode>
 )
