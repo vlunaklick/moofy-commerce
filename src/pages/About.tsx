@@ -10,7 +10,7 @@ type Props = {}
 const About = (props: Props) => {
   return (
     <Main>
-      <div className="md:max-w-[750px] mx-auto flex flex-col gap-6">
+      <div className="md:max-w-[750px] mx-auto flex flex-col gap-6 w-full">
         <Sections>
           <TitleHome title="About" />
           <BannerAbout />

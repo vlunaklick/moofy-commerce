@@ -19,7 +19,7 @@ const Home = (props: Props) => {
 
   return (
     <Main>
-      <div className="md:max-w-[750px] mx-auto flex flex-col gap-6">
+      <div className="md:max-w-[750px] mx-auto flex flex-col gap-6 w-full">
         <Sections>
           <div className="text-2xl gap-1 font-semibold normal-case flex flex-col md:flex-row text-zinc-800 md:text-3xl">
             <h3>Make your setup</h3>
@@ -34,9 +34,14 @@ const Home = (props: Props) => {
           />
         </Sections>
         <Sections>
-          <TitleHome title="Our products" message="See more" link="/products" />
+          <TitleHome title="Our products" message="See more" link="/shop/1" />
           <ProductsGrid products={items} limit={6} />
-          <Button center={true} variant={'emerald'} text={'Shop now'} />
+          <Button
+            center={true}
+            variant={'emerald'}
+            text={'Shop now'}
+            link={'/shop/1'}
+          />
         </Sections>
         <Sections>
           <TitleHome title="Microphones" />
@@ -44,10 +49,15 @@ const Home = (props: Props) => {
             image="https://www.audio-technica.com/es-es/media/catalog/product/cache/8dd197211b5cade13ef7fc9815610330/a/t/at2020_01a.png"
             title="Improve your audio quality"
             message="Navigate there ->"
-            link="/products"
+            link="/shop/microphones"
           />
           <ProductsGrid products={items} limit={6} category="microphones" />
-          <Button center={true} variant={'emerald'} text={'See more'} />
+          <Button
+            center={true}
+            variant={'emerald'}
+            text={'See more'}
+            link={'/shop/1/microphones'}
+          />
         </Sections>
       </div>
     </Main>

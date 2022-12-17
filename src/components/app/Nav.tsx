@@ -35,7 +35,7 @@ function Nav({}: Props) {
             </Link>
           </li>
           <li className="cursor-pointer group">
-            <Link to={'/shop'}>
+            <Link to={'/shop/1'}>
               Shop
               <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-zinc-900"></span>
             </Link>
@@ -49,26 +49,27 @@ function Nav({}: Props) {
       </div>
       {isOpen && (
         <ul className="flex flex-col md:hidden text-lg text-center absolute bg-zinc-50 w-full top-full ">
-          <li
-            className="p-3 cursor-pointer border-zinc-50 border-8"
-            onClick={() => handleOpen()}
-          >
-            <Link to={'/about'}>About</Link>
-          </li>
-          <li
-            className="p-3 cursor-pointer border-zinc-50 border-8"
-            onClick={() => handleOpen()}
-          >
-            <Link to={'/shop'}>Shop</Link>
-          </li>
-          <li
-            className="p-3 cursor-pointer border-zinc-50 border-8"
-            onClick={() => handleOpen()}
-          >
-            <Link to={'/cart'}>
+          <Link to={'/about'}>
+            <li className="p-3 cursor-pointer" onClick={() => close()}>
+              About
+            </li>
+          </Link>
+          <Link to={'/shop/1'}>
+            <li
+              className="p-3 cursor-pointer border-zinc-100 border-t-2"
+              onClick={() => close()}
+            >
+              Shop
+            </li>
+          </Link>
+          <Link to={'/cart'}>
+            <li
+              className="p-3 cursor-pointer border-zinc-100 border-t-2"
+              onClick={() => close()}
+            >
               <CgShoppingCart className="inline-block text-2xl" />
-            </Link>
-          </li>
+            </li>
+          </Link>
         </ul>
       )}
     </nav>

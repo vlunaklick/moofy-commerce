@@ -5,10 +5,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import Home from './pages/Home'
 import About from './pages/About'
-import Shop from './pages/Shop'
 import Cart from './pages/Cart'
 import Error from './pages/Error'
 import { ItemProvider } from './context/ItemsContext'
+import Shop from './pages/Shop'
 
 const router = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     element: <About />,
   },
   {
-    path: '/products',
+    path: '/shop/:pagination',
     element: <Shop />,
   },
   {
