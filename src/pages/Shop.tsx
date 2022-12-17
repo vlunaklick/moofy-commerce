@@ -11,20 +11,24 @@ import HeaderShop from '../components/sites/shop/HeaderShop'
 type Props = {}
 
 const Shop = (props: Props) => {
-  const { items } = useContext(ItemsContext)
+  const { items, categorys } = useContext(ItemsContext)
   const navigate = useNavigate()
 
-  const { pagination } = useParams()
+  const { pagination, category } = useParams()
 
   let numberPage
 
   useEffect(() => {
-    if (isNaN(Number(pagination))) {
+    let calcPages = Math.ceil(items.length / 6)
+    if (
+      isNaN(Number(pagination)) ||
+      Number(pagination) > calcPages ||
+      Number(pagination) < 1
+    ) {
       return navigate('/error')
     }
-    let calcPages = Math.ceil(items.length / 6)
-    if (Number(pagination) > calcPages) {
-      return navigate('/error')
+    if (category !== undefined && !categorys.includes(category)) {
+      return navigate(`/error`)
     }
   }, [])
 
@@ -34,14 +38,23 @@ const Shop = (props: Props) => {
     numberPage = 1
   }
 
-  let itemsFiltered = items
+  let itemsCategory = items
+
+  if (category) {
+    itemsCategory = items.filter(item => item.category.includes(category))
+  }
+
+  let itemsFiltered = itemsCategory
 
   if (pagination) {
     const itemsPerPage = 6
     const page = parseInt(pagination)
-    itemsFiltered = items.slice(itemsPerPage * (page - 1), itemsPerPage * page)
+    itemsFiltered = itemsFiltered.slice(
+      itemsPerPage * (page - 1),
+      itemsPerPage * page
+    )
   } else {
-    itemsFiltered = items.slice(0, 6)
+    itemsFiltered = itemsFiltered.slice(0, 6)
   }
 
   return (
@@ -50,7 +63,11 @@ const Shop = (props: Props) => {
         <Sections>
           <HeaderShop />
           <ProductsGrid products={itemsFiltered} />
-          <PaginationShop products={items} page={numberPage} />
+          <PaginationShop
+            products={itemsCategory}
+            page={numberPage}
+            category={category}
+          />
         </Sections>
       </div>
     </Main>

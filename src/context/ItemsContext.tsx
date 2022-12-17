@@ -135,6 +135,7 @@ const PRODUCTS = [
 export const ItemsContext = createContext<{
   items: Product[]
   cart: ProductsBought[]
+  categorys: string[]
   addCart?: (item: Product) => void
   removeCart?: (item: Product) => void
   clearCart?: () => void
@@ -144,11 +145,24 @@ export const ItemsContext = createContext<{
 }>({
   items: [],
   cart: [],
+  categorys: [],
 })
 
 export const ItemProvider = ({ children }: { children: React.ReactNode }) => {
   const [items, setItems] = useState<Product[]>(PRODUCTS)
   const [cart, setCart] = useState<ProductsBought[]>([])
+  const [categorys, setCategorys] = useState<string[]>([])
+
+  useEffect(() => {
+    const categoryPrimary: string[] = []
+
+    items.forEach(item => {
+      if (!categoryPrimary.includes(item.category[0])) {
+        categoryPrimary.push(item.category[0])
+      }
+    })
+    setCategorys(categoryPrimary)
+  }, [items])
 
   const addStock = (id: number) => {
     const newItem = items.map(item =>
@@ -227,6 +241,7 @@ export const ItemProvider = ({ children }: { children: React.ReactNode }) => {
         addCart,
         removeCart,
         clearCart,
+        categorys,
       }}
     >
       {children}

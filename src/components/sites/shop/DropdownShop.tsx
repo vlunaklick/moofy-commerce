@@ -9,15 +9,7 @@ import { BsFilter } from 'react-icons/bs'
 type Props = {}
 
 const DropdownShop = (props: Props) => {
-  const { items } = useContext(ItemsContext)
-
-  const categoryPrimary: string[] = []
-
-  items.forEach(item => {
-    if (!categoryPrimary.includes(item.category[0])) {
-      categoryPrimary.push(item.category[0])
-    }
-  })
+  const { items, categorys } = useContext(ItemsContext)
 
   const { isOpen, handleOpen, close } = useMenu()
   return (
@@ -31,7 +23,7 @@ const DropdownShop = (props: Props) => {
         </button>
       </div>
       {isOpen &&
-        categoryPrimary.map((category, index) => (
+        categorys.map((category, index) => (
           <Link to={`/shop/1/${category}`} key={index}>
             <button
               className="w-full h-full p-3 text-left"
