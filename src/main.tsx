@@ -9,6 +9,7 @@ import Cart from './pages/Cart'
 import Error from './pages/Error'
 import { ItemProvider } from './context/ItemsContext'
 import Shop from './pages/Shop'
+import Product from './pages/Product'
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: '/shop/:pagination/:category/:specific',
     element: <Shop />,
+  },
+  {
+    path: '/products/:category/:id',
+    element: <Product />,
   },
   {
     path: '/cart',

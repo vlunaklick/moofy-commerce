@@ -8,9 +8,11 @@ type Props = {
 const Main = ({ children }: Props) => {
   return (
     <div className="bg-zinc-50 min-h-screen">
-      <div className="container mx-auto px-5 md:px-0 min-h-screen flex flex-col">
-        <Nav />
-        {children}
+      <div className="container mx-auto px-5 md:px-0 min-h-screen flex flex-col justify-between">
+        <div className="flex flex-col gap-3 h-full">
+          <Nav />
+          {children}
+        </div>
         <Footer />
       </div>
     </div>

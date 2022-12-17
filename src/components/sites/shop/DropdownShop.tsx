@@ -24,9 +24,13 @@ const DropdownShop = (props: Props) => {
       </div>
       {isOpen &&
         categorys.map((category, index) => (
-          <Link to={`/shop/1/${category}`} key={index}>
+          <Link
+            className="w-full h-full text-center"
+            to={`/shop/1/${category}`}
+            key={index}
+          >
             <button
-              className="w-full h-full p-3 text-left"
+              className="w-full text-center h-full p-3"
               onClick={() => close()}
             >
               {removeAndCapitalize(category)}

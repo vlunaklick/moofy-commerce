@@ -16,6 +16,7 @@ const PaginationShop = ({ products, page, category, specific }: Props) => {
   return (
     <div className="flex items-center w-full gap-6 justify-center mt-4">
       <Link
+        className={page === 1 ? 'cursor-default' : 'cursor-pointer'}
         to={
           page === 1
             ? `/shop/${page}${category ? `/${category}` : ''}${
@@ -39,6 +40,7 @@ const PaginationShop = ({ products, page, category, specific }: Props) => {
         <p>{page || page === 1}</p>
       </div>
       <Link
+        className={page === calcPages ? 'cursor-default' : 'cursor-pointer'}
         to={
           page === calcPages
             ? `/shop/${page}${category ? `/${category}` : ''}${

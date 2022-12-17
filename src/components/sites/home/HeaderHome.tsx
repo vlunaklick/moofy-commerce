@@ -36,7 +36,7 @@ const HeaderHome = ({
         </Link>
       </div>
       <div className="bg-emerald-800 aspect-square p-1 rounded-2xl flex items-center justify-center self-center">
-        <img className="object-contain" src={image} alt="GeForce 1050Ti" />
+        <img className="object-contain" src={image} alt={title} />
       </div>
     </div>
   )
