@@ -6,7 +6,7 @@ import { Product } from '../../../types/products'
 type Props = {
   products: Product[]
   page: number
-  category: string
+  category?: string
 }
 
 const PaginationShop = ({ products, page, category }: Props) => {
