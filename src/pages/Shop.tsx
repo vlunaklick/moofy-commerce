@@ -14,7 +14,7 @@ const Shop = (props: Props) => {
   const { items, categorys } = useContext(ItemsContext)
   const navigate = useNavigate()
 
-  const { pagination, category } = useParams()
+  const { pagination, category, specific } = useParams()
 
   let numberPage
 
@@ -44,6 +44,24 @@ const Shop = (props: Props) => {
     itemsCategory = items.filter(item => item.category.includes(category))
   }
 
+  let categorysOn: string[] = []
+
+  useEffect(() => {
+    itemsCategory.forEach(item => {
+      item.category.forEach(category => {
+        if (!categorysOn.includes(category)) {
+          categorysOn.push(category)
+        }
+      })
+    })
+  }, [])
+
+  if (specific) {
+    itemsCategory = itemsCategory.filter(item =>
+      item.category.includes(specific)
+    )
+  }
+
   let itemsFiltered = itemsCategory
 
   if (pagination) {
@@ -67,6 +85,7 @@ const Shop = (props: Props) => {
             products={itemsCategory}
             page={numberPage}
             category={category}
+            specific={specific}
           />
         </Sections>
       </div>

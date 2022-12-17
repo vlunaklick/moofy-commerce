@@ -49,14 +49,14 @@ const Home = (props: Props) => {
             image="https://www.audio-technica.com/es-es/media/catalog/product/cache/8dd197211b5cade13ef7fc9815610330/a/t/at2020_01a.png"
             title="Improve your audio quality"
             message="Navigate there ->"
-            link="/shop/microphones"
+            link="/shop/1/peripherals/microphones"
           />
           <ProductsGrid products={items} limit={6} category="microphones" />
           <Button
             center={true}
             variant={'emerald'}
             text={'See more'}
-            link={'/shop/1/microphones'}
+            link={'/shop/1/peripherals/microphones'}
           />
         </Sections>
       </div>

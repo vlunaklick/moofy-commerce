@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 
 import './index.css'
 import Home from './pages/Home'
@@ -20,11 +20,19 @@ const router = createBrowserRouter([
     element: <About />,
   },
   {
+    path: '/shop',
+    element: <Navigate to={'/shop/1'} replace />,
+  },
+  {
     path: '/shop/:pagination',
     element: <Shop />,
   },
   {
     path: '/shop/:pagination/:category',
+    element: <Shop />,
+  },
+  {
+    path: '/shop/:pagination/:category/:specific',
     element: <Shop />,
   },
   {

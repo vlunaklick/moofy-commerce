@@ -11,7 +11,7 @@ const ProductCard = ({ product }: Props) => {
     <div className="col-span-1 flex flex-col gap-1">
       <Link
         className="h-full max-h-52 md:max-h-72"
-        to={`/${product.category[0]}/${product.id}`}
+        to={`/products/${product.category[0]}/${product.id}`}
       >
         <div className="bg-zinc-300 p-4 py-6 rounded-lg flex justify-center h-full">
           <img

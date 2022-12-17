@@ -8,8 +8,6 @@ type Props = {}
 function Nav({}: Props) {
   const { isOpen, handleOpen, close } = useMenu()
 
-  console.log(isOpen)
-
   return (
     <nav className="w-full py-4 flex flex-col md:flex-row md:justify-between md:items-center relative">
       <div className="flex justify-between">

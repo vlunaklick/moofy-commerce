@@ -7,9 +7,10 @@ type Props = {
   products: Product[]
   page: number
   category?: string
+  specific?: string
 }
 
-const PaginationShop = ({ products, page, category }: Props) => {
+const PaginationShop = ({ products, page, category, specific }: Props) => {
   let calcPages = Math.ceil(products.length / 6)
 
   return (
@@ -17,8 +18,12 @@ const PaginationShop = ({ products, page, category }: Props) => {
       <Link
         to={
           page === 1
-            ? `/shop/${page}${category ? `/${category}` : ''}`
-            : `/shop/${page - 1}${category ? `/${category}` : ''}`
+            ? `/shop/${page}${category ? `/${category}` : ''}${
+                specific ? `/${specific}` : ''
+              }`
+            : `/shop/${page - 1}${category ? `/${category}` : ''}${
+                specific ? `/${specific}` : ''
+              }`
         }
       >
         <MdKeyboardArrowLeft
@@ -36,8 +41,12 @@ const PaginationShop = ({ products, page, category }: Props) => {
       <Link
         to={
           page === calcPages
-            ? `/shop/${page}${category ? `/${category}` : ''}`
-            : `/shop/${page + 1}${category ? `/${category}` : ''}`
+            ? `/shop/${page}${category ? `/${category}` : ''}${
+                specific ? `/${specific}` : ''
+              }`
+            : `/shop/${page + 1}${category ? `/${category}` : ''}${
+                specific ? `/${specific}` : ''
+              }`
         }
       >
         <MdKeyboardArrowRight
