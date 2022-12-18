@@ -29,9 +29,10 @@ const Products = (props: Props) => {
     }
   }, [])
 
-  const item = items.find(item => item.id === Number(id))
+  const item = items.find(item => item.id === Number(id)) || items[0]
 
   const handleAdd = (item: Product) => {
+    console.log(item.stock)
     if (item.stock > 0) {
       addCart(item)
       removeStock(item.id)
@@ -39,7 +40,7 @@ const Products = (props: Props) => {
   }
 
   const handleRemove = (item: Product) => {
-    const itemFound = cart.find(item => item.id === Number(id))
+    const itemFound = cart.find(ite => ite.id === item.id)
     if (itemFound) {
       removeCart(itemFound)
       addStock(itemFound.id)
@@ -71,8 +72,8 @@ const Products = (props: Props) => {
                 alt={item?.title}
               />
             </div>
-            <div className="flex flex-col md:w-[500px] justify-between">
-              <div className="flex flex-col gap-1">
+            <div className="flex flex-col md:w-[500px] justify-between gap-3">
+              <div className="flex flex-col gap-2">
                 <h2 className="font-bold text-xl text-zinc-800">
                   {item?.title}
                 </h2>

@@ -12,7 +12,7 @@ const classes = {
 }
 
 type Props = {
-  item?: Product
+  item: Product
   onClick?: (item: Product) => void
   text?: string
   variant?: 'border' | 'danger' | 'outline'
@@ -21,22 +21,18 @@ type Props = {
 
 const ButtonProduct = ({
   item,
-  onClick = () => {},
+  onClick = (item: Product) => {},
   text = 'Button',
   variant = 'border',
   stock = 0,
 }: Props) => {
-  const handleClick = () => {
-    if (item && stock > 0) {
-      onClick(item)
-    }
-  }
-
   return (
     <button
-      onClick={handleClick}
+      onClick={() => onClick(item)}
       className={
-        classes[stock > 0 ? variant : 'disabled'] +
+        classes[
+          stock > 0 ? variant : variant === 'border' ? 'disabled' : variant
+        ] +
         ' ' +
         'rounded-xl font-semibold py-2 px-5 cursor-pointer capitalize transition-colors'
       }

@@ -244,25 +244,24 @@ export const ItemProvider = ({ children }: { children: React.ReactNode }) => {
       item.id === id ? { ...item, stock: item.stock + 1 } : item
     )
     setItems(newItem)
-    localStorage.setItem('items', JSON.stringify(newItem))
   }
 
   const removeStock = (id: number) => {
     const newItem = items.map(item =>
-      item.id === id ? { ...item, stock: item.stock - 1 } : item
+      item.id === id && item.stock > 0
+        ? { ...item, stock: item.stock - 1 }
+        : item
     )
     setItems(newItem)
-    localStorage.setItem('items', JSON.stringify(newItem))
   }
 
   const restartStock = () => {
     setItems(PRODUCTS)
-    localStorage.setItem('items', JSON.stringify(PRODUCTS))
   }
 
   const addCart = (item: Product) => {
     const itemInCart = cart.find(cartItem => cartItem.id === item.id)
-    if (itemInCart && itemInCart.quantity < item.stock) {
+    if (itemInCart && itemInCart.quantity < itemInCart.stock) {
       setCart(
         cart.map(cartItem =>
           cartItem.id === item.id
@@ -273,12 +272,11 @@ export const ItemProvider = ({ children }: { children: React.ReactNode }) => {
     } else if (!itemInCart) {
       setCart([...cart, { ...item, quantity: 1 }])
     }
-    localStorage.setItem('cart', JSON.stringify(cart))
   }
 
   const removeCart = (item: Product) => {
     const itemInCart = cart.find(cartItem => cartItem.id === item.id)
-    if (itemInCart == undefined) return
+    if (itemInCart === undefined) return
     if (itemInCart.quantity === 1) {
       setCart(cart.filter(cartItem => cartItem.id !== item.id))
     } else {
@@ -290,12 +288,10 @@ export const ItemProvider = ({ children }: { children: React.ReactNode }) => {
         )
       )
     }
-    localStorage.setItem('cart', JSON.stringify(cart))
   }
 
   const clearCart = () => {
     setCart([])
-    localStorage.setItem('cart', JSON.stringify(cart))
   }
 
   useEffect(() => {
@@ -304,6 +300,14 @@ export const ItemProvider = ({ children }: { children: React.ReactNode }) => {
       setCart(JSON.parse(cart))
     }
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
+
+  useEffect(() => {
+    localStorage.setItem('items', JSON.stringify(items))
+  }, [items])
 
   return (
     <ItemsContext.Provider
