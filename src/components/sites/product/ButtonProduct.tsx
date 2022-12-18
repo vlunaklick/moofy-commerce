@@ -2,16 +2,21 @@ import { Product } from '../../../types/products'
 
 const classes = {
   border:
-    'bg-emerald-200 text-emerald-800 border border-emerald-200 hover:bg-emerald-300 hover:border-emerald-300',
+    'bg-zinc-700 text-zinc-100 border border-zinc-700 hover:bg-zinc-800 hover:border-zinc-50',
+  outline:
+    'bg-zinc-50 text-zinc-800 border border-zinc-100 hover:bg-zinc-100 hover:border-zinc-200',
   danger:
     'bg-red-200 text-red-900 border border-red-200 hover:bg-red-300 hover:border-red-300',
+  disabled:
+    'bg-zinc-200 text-zinc-500 border border-zinc-200 cursor-not-allowed',
 }
 
 type Props = {
   item?: Product
   onClick?: (item: Product) => void
   text?: string
-  variant?: 'border' | 'danger'
+  variant?: 'border' | 'danger' | 'outline'
+  stock?: number
 }
 
 const ButtonProduct = ({
@@ -19,9 +24,10 @@ const ButtonProduct = ({
   onClick = () => {},
   text = 'Button',
   variant = 'border',
+  stock = 0,
 }: Props) => {
   const handleClick = () => {
-    if (item) {
+    if (item && stock > 0) {
       onClick(item)
     }
   }
@@ -30,9 +36,9 @@ const ButtonProduct = ({
     <button
       onClick={handleClick}
       className={
-        classes[variant] +
+        classes[stock > 0 ? variant : 'disabled'] +
         ' ' +
-        'rounded-2xl font-semibold py-2 px-5 cursor-pointer capitalize transition-colors'
+        'rounded-xl font-semibold py-2 px-5 cursor-pointer capitalize transition-colors'
       }
     >
       {text}

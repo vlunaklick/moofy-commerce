@@ -12,12 +12,16 @@ const StockProduct = ({ stock }: Props) => {
   return (
     <div
       className={
-        'absolute right-2 top-2 p-2 px-3 rounded-xl text-xs font-semibold' +
+        'right-2 w-max p-1 px-2 rounded-xl text-xs font-semibold' +
         ' ' +
-        classes[stock === 0 ? 'red' : stock === 1 ? 'yellow' : 'green']
+        classes[stock === 0 ? 'red' : stock && stock < 3 ? 'yellow' : 'green']
       }
     >
-      {stock === 0 ? 'Out of stock' : stock === 1 ? 'Last stock' : 'In stock'}
+      {stock === 0
+        ? 'Out of stock'
+        : stock && stock < 3
+        ? 'Low stock'
+        : 'In stock'}
     </div>
   )
 }

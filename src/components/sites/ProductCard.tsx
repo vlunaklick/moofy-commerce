@@ -4,11 +4,19 @@ import { Product } from '../../types/products'
 
 type Props = {
   product: Product
+  hidden?: boolean
+  opu: boolean
 }
 
-const ProductCard = ({ product }: Props) => {
+const ProductCard = ({ product, hidden, opu }: Props) => {
   return (
-    <div className="col-span-1 flex flex-col gap-1">
+    <div
+      className={
+        'col-span-1 flex flex-col gap-1' +
+        ' ' +
+        (hidden ? (opu ? 'flex md:hidden' : ' hidden md:flex') : '')
+      }
+    >
       <Link
         className="h-full max-h-52 md:max-h-72"
         to={`/products/${product.category[0]}/${product.id}`}

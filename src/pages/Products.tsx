@@ -7,6 +7,7 @@ import Sections from '../components/layouts/Sections'
 import ButtonProduct from '../components/sites/product/ButtonProduct'
 import StockProduct from '../components/sites/product/StockProduct'
 import { Product } from '../types/products'
+import ProductsGrid from '../components/sites/ProductsGrid'
 
 type Props = {}
 
@@ -45,29 +46,63 @@ const Products = (props: Props) => {
     }
   }
 
+  const handleGoBack = () => {
+    navigate(-1)
+  }
+
   return (
     <Main>
       <div className="md:max-w-[750px] mx-auto flex flex-col gap-6 w-full">
         <Sections>
-          <div className="bg-zinc-300 p-4 py-6 rounded-lg flex justify-center h-full relative">
-            <StockProduct stock={item?.stock} />
-            <img src={item?.image} alt={item?.title} />
+          <div className="flex justify-between items-center">
+            <h1 className="text-3xl font-bold text-zinc-800">Product</h1>
+            <button
+              onClick={() => handleGoBack()}
+              className="text-xs text-emerald-500"
+            >
+              Go back -{'>'}
+            </button>
           </div>
-          <div className="flex flex-col gap-1">
-            <h2 className="font-bold text-xl text-zinc-800">{item?.title}</h2>
-            <p className="text-xs text-zinc-500">{item?.description}</p>
+          <div className="flex flex-col md:flex-row justify-start gap-3">
+            <div className="bg-zinc-300 p-4 py-6 rounded-lg flex justify-center h-[400px]">
+              <img
+                className={'object-contain h-full w-full'}
+                src={item?.image}
+                alt={item?.title}
+              />
+            </div>
+            <div className="flex flex-col md:w-[500px] justify-between">
+              <div className="flex flex-col gap-1">
+                <h2 className="font-bold text-xl text-zinc-800">
+                  {item?.title}
+                </h2>
+                <StockProduct stock={item?.stock} />
+                <p className="text-xs text-zinc-500">{item?.description}</p>
+              </div>
+              <div className="flex gap-2 mx-auto mt-2 md:mx-0">
+                <ButtonProduct
+                  item={item}
+                  text={'Add to cart'}
+                  onClick={handleAdd}
+                  stock={item?.stock}
+                />
+                <ButtonProduct
+                  item={item}
+                  variant="outline"
+                  text="Remove"
+                  onClick={handleRemove}
+                  stock={item?.stock}
+                />
+              </div>
+            </div>
           </div>
-          <div className="flex gap-2 mx-auto mt-2">
-            <ButtonProduct
-              item={item}
-              text={'Add to cart'}
-              onClick={handleAdd}
-            />
-            <ButtonProduct
-              item={item}
-              variant="danger"
-              text="Remove"
-              onClick={handleRemove}
+          <div className="flex flex-col gap-2 mt-4">
+            <h2 className="text-3xl font-bold text-zinc-800">Other products</h2>
+            <ProductsGrid
+              products={items}
+              limit={3}
+              responsive={1}
+              use={true}
             />
           </div>
         </Sections>

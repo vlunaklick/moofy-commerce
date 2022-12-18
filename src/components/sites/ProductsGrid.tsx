@@ -5,9 +5,19 @@ type Props = {
   products: Product[]
   limit?: number
   category?: string
+  responsive?: number
+  use?: boolean
+  opu?: boolean
 }
 
-const ProductsGrid = ({ products, limit, category }: Props) => {
+const ProductsGrid = ({
+  products,
+  limit = 0,
+  category,
+  responsive = 0,
+  use = false,
+  opu = false,
+}: Props) => {
   let finalProducts = products || []
 
   if (category) {
@@ -20,11 +30,21 @@ const ProductsGrid = ({ products, limit, category }: Props) => {
     finalProducts = finalProducts.slice(0, limit)
   }
 
+  let number: number = 0
+
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-      {finalProducts.map(product => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+      {finalProducts.map(product => {
+        number++
+        return (
+          <ProductCard
+            key={product.id}
+            product={product}
+            hidden={use && number > responsive + 1}
+            opu={opu}
+          />
+        )
+      })}
     </div>
   )
 }

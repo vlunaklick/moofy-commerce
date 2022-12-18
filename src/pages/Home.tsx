@@ -51,7 +51,7 @@ const Home = (props: Props) => {
             message="Navigate there ->"
             link="/shop/1/peripherals/microphones"
           />
-          <ProductsGrid products={items} limit={6} category="microphones" />
+          <ProductsGrid products={items} limit={3} category="microphones" />
           <Button
             center={true}
             variant={'emerald'}
