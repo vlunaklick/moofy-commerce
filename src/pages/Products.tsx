@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { ItemsContext } from '../context/ItemsContext'
@@ -18,6 +18,8 @@ const Products = (props: Props) => {
     useContext(ItemsContext)
 
   const { id } = useParams()
+
+  const [filteredItems, setFilteredItems] = useState<Product[]>([])
 
   useEffect(() => {
     if (
@@ -57,9 +59,11 @@ const Products = (props: Props) => {
       .replace(/\B(?=(\d{3})+(?!\d))/g, '.')
   }
 
-  const filteredItems = items
-    .filter(item => item.id !== Number(id))
-    .sort(() => Math.random() - 0.5)
+  useEffect(() => {
+    const filtered = items.filter(item => item.id !== Number(id))
+    const mixed = filtered.sort(() => Math.random() - 0.5)
+    setFilteredItems(mixed)
+  }, [id])
 
   return (
     <Main>

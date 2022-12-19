@@ -1,5 +1,4 @@
 import { Product } from '../../../types/products'
-import { ProductsBought } from '../../../types/productsBought'
 import ButtonProduct from '../product/ButtonProduct'
 
 type Props = {

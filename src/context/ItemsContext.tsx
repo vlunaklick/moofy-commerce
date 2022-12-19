@@ -299,6 +299,10 @@ export const ItemProvider = ({ children }: { children: React.ReactNode }) => {
     if (cart) {
       setCart(JSON.parse(cart))
     }
+    const items = localStorage.getItem('items')
+    if (items) {
+      setItems(JSON.parse(items))
+    }
   }, [])
 
   useEffect(() => {
