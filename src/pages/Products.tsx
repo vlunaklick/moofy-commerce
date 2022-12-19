@@ -32,7 +32,6 @@ const Products = (props: Props) => {
   const item = items.find(item => item.id === Number(id)) || items[0]
 
   const handleAdd = (item: Product) => {
-    console.log(item.stock)
     if (item.stock > 0) {
       addCart(item)
       removeStock(item.id)
