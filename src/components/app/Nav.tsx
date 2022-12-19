@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+
 import { Link } from 'react-router-dom'
 import { useMenu } from '../../hooks/useMenu'
 
@@ -8,8 +10,29 @@ type Props = {}
 function Nav({}: Props) {
   const { isOpen, handleOpen, close } = useMenu()
 
+  const ref = useRef<HTMLDivElement>(null)
+
+  // close the menu when the user clicks outside the menu
+  const handleClickOutside = (e: any) => {
+    if (ref.current && !ref.current.contains(e.target)) {
+      close()
+    }
+  }
+
+  // close the menu when the user clicks outside the menu
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside, true)
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true)
+    }
+  }, [])
+
   return (
-    <nav className="w-full py-4 flex flex-col md:flex-row md:justify-between md:items-center relative">
+    <nav
+      ref={ref}
+      className="w-full py-4 flex flex-col md:flex-row md:justify-between md:items-center relative"
+    >
       <div className="flex justify-between">
         <Link to="/">
           <h1 className="font-bold text-4xl text-zinc-900">
