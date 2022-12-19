@@ -10,7 +10,7 @@ const PRODUCTS = [
     brand: 'Nvidia',
     image:
       'https://xtremegames.com.ar/wp-content/uploads/2022/02/product_7_20180411113751_5acd830f900d9.png',
-    price: 53900,
+    price: 53900.76,
     description:
       'The NVIDIA GeForce GTX 1050 Ti is a mid-range graphics card that was released in October 2016. It is based on the Pascal architecture and uses the GP107 chip, which is manufactured using a 14nm process. The card is equipped with 768 CUDA cores and has a base clock speed of 1290 MHz, which can be boosted up to 1392 MHz. It has 4GB of GDDR5 memory and a memory clock speed of 7.00 GHz. The card has a power draw of 75 watts and requires a single 6-pin PCI-E power connector. It supports features such as Nvidia Ansel, G-Sync, and GPU Boost 3.0. The GTX 1050 Ti is capable of running most modern games at high settings and resolutions, making it a good choice for gamers on a budget.',
     category: ['video-cards'],

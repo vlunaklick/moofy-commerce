@@ -50,8 +50,11 @@ const Products = (props: Props) => {
     navigate(-1)
   }
 
-  const addDot = (num: number) => {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+  const changeDotToCommaAndAddDot = (num: number) => {
+    return num
+      .toString()
+      .replace(/\./g, ',')
+      .replace(/\B(?=(\d{3})+(?!\d))/g, '.')
   }
 
   return (
@@ -70,7 +73,7 @@ const Products = (props: Props) => {
           <div className="flex flex-col md:flex-row justify-start gap-3">
             <div className="bg-zinc-300 p-4 py-6 rounded-lg flex justify-center h-[400px] relative">
               <p className="absolute bottom-3 font-medium text-zinc-900 bg-zinc-100 rounded-lg p-1 px-3">
-                ${addDot(item?.price)}
+                ${changeDotToCommaAndAddDot(item?.price)}
               </p>
               <img
                 className={'object-contain h-full w-full'}

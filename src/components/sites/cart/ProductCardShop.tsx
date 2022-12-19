@@ -15,8 +15,11 @@ const ProductCardShop = ({
   handleRemove,
   quantity,
 }: Props) => {
-  const addDot = (num: number) => {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+  const changeDotToCommaAndAddDot = (num: number) => {
+    return num
+      .toString()
+      .replace(/\./g, ',')
+      .replace(/\B(?=(\d{3})+(?!\d))/g, '.')
   }
 
   return (
@@ -31,7 +34,9 @@ const ProductCardShop = ({
       <div className="flex flex-col gap-1 max-w-[230px] md:max-w-none justify-between">
         <div className="flex flex-col gap-1">
           <h1 className="truncate text-zinc-800 font-bold">{item.title}</h1>
-          <p className="font-semibold">${addDot(item.price)}</p>
+          <p className="font-semibold">
+            ${changeDotToCommaAndAddDot(item.price)}
+          </p>
           <p>Quantity: {quantity}</p>
         </div>
         <div className="flex gap-2">

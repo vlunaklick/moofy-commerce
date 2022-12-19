@@ -35,6 +35,13 @@ const Cart = (props: Props) => {
     }
   }
 
+  const changeDotToCommaAndAddDot = (num: number) => {
+    return num
+      .toString()
+      .replace(/\./g, ',')
+      .replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+  }
+
   if (cart.length === 0) {
     return (
       <Main>
@@ -91,15 +98,11 @@ const Cart = (props: Props) => {
             <p className="text-xl font-semibold">Total:</p>
             <p className="text-xl font-bold">
               $
-              {cart
-                .reduce((acc, item) => {
-                  let itemFound = items.find(ite => ite.id === item.id)
-                  if (itemFound) {
-                    return acc + itemFound.price * item.quantity
-                  }
-                  return acc
+              {changeDotToCommaAndAddDot(
+                cart.reduce((acc, item) => {
+                  return acc + item.price * item.quantity
                 }, 0)
-                .toFixed(2)}
+              )}
             </p>
           </div>
         </Sections>
