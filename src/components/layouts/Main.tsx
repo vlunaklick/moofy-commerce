@@ -11,7 +11,9 @@ const Main = ({ children }: Props) => {
       <div className="container mx-auto px-5 md:px-0 min-h-screen flex flex-col justify-between">
         <div className="flex flex-col gap-3 h-full">
           <Nav />
-          {children}
+          <div className="md:max-w-[750px] mx-auto flex flex-col gap-6 w-full">
+            {children}
+          </div>
         </div>
         <Footer />
       </div>

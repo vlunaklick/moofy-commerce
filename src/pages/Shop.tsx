@@ -76,22 +76,20 @@ const Shop = (props: Props) => {
   }
 
   return (
-    <Main>
-      <div className="md:max-w-[750px] mx-auto flex flex-col gap-6 w-full h-full">
-        <div className="flex flex-col justify-between h-full gap-3">
-          <div className="flex flex-col gap-3">
-            <HeaderShop />
-            <ProductsGrid products={itemsFiltered} />
-          </div>
-          <PaginationShop
-            products={itemsCategory}
-            page={numberPage}
-            category={category}
-            specific={specific}
-          />
+    <>
+      <div className="flex flex-col justify-between h-full gap-3">
+        <div className="flex flex-col gap-3">
+          <HeaderShop />
+          <ProductsGrid products={itemsFiltered} />
         </div>
+        <PaginationShop
+          products={itemsCategory}
+          page={numberPage}
+          category={category}
+          specific={specific}
+        />
       </div>
-    </Main>
+    </>
   )
 }
 

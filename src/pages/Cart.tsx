@@ -14,8 +14,16 @@ type Props = {}
 const Cart = (props: Props) => {
   const navigate = useNavigate()
 
-  const { items, addCart, removeCart, removeStock, addStock, cart } =
-    useContext(ItemsContext)
+  const {
+    items,
+    addCart,
+    removeCart,
+    removeStock,
+    addStock,
+    cart,
+    clearCart,
+    restartStock,
+  } = useContext(ItemsContext)
 
   const handleGoBack = () => {
     navigate(-1)
@@ -44,12 +52,14 @@ const Cart = (props: Props) => {
   }
 
   const handleCheckout = () => {
-    navigate('/checkout')
+    clearCart()
+    restartStock()
+    navigate('/')
   }
 
   if (cart.length === 0) {
     return (
-      <Main>
+      <>
         <div className="md:max-w-[750px] mx-auto flex flex-col gap-6 w-full h-full">
           <Sections>
             <div className="flex justify-between items-center h-full">
@@ -68,57 +78,55 @@ const Cart = (props: Props) => {
             </div>
           </Sections>
         </div>
-      </Main>
+      </>
     )
   }
 
   return (
-    <Main>
-      <div className="md:max-w-[750px] mx-auto flex flex-col gap-6 w-full">
-        <Sections>
-          <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-bold text-zinc-800">Cart</h1>
-            <button
-              onClick={() => handleGoBack()}
-              className="text-xs text-emerald-500"
-            >
-              Go back -{'>'}
-            </button>
-          </div>
-          {cart.map(item => {
-            let itemFound = items.find(ite => ite.id === item.id)
-            if (itemFound) {
-              return (
-                <ProductCardShop
-                  key={item.id}
-                  item={itemFound}
-                  quantity={item.quantity}
-                  handleAdd={handleAdd}
-                  handleRemove={handleRemove}
-                />
-              )
-            }
-          })}
-          <div className="flex flex-col">
-            <div className="flex justify-between text-zinc-800">
-              <p className="text-xl font-semibold">Total:</p>
-              <p className="text-xl font-bold">
-                $
-                {changeDotToCommaAndAddDot(
-                  cart.reduce((acc, item) => {
-                    return acc + item.price * item.quantity
-                  }, 0)
-                )}
-              </p>
-            </div>
-            <p className="text-xs text-zinc-400">
-              Taxes and shipping not included.
+    <>
+      <Sections>
+        <div className="flex justify-between items-center">
+          <h1 className="text-3xl font-bold text-zinc-800">Cart</h1>
+          <button
+            onClick={() => handleGoBack()}
+            className="text-xs text-emerald-500"
+          >
+            Go back -{'>'}
+          </button>
+        </div>
+        {cart.map(item => {
+          let itemFound = items.find(ite => ite.id === item.id)
+          if (itemFound) {
+            return (
+              <ProductCardShop
+                key={item.id}
+                item={itemFound}
+                quantity={item.quantity}
+                handleAdd={handleAdd}
+                handleRemove={handleRemove}
+              />
+            )
+          }
+        })}
+        <div className="flex flex-col">
+          <div className="flex justify-between text-zinc-800">
+            <p className="text-xl font-semibold">Total:</p>
+            <p className="text-xl font-bold">
+              $
+              {changeDotToCommaAndAddDot(
+                cart.reduce((acc, item) => {
+                  return acc + item.price * item.quantity
+                }, 0)
+              )}
             </p>
           </div>
-          <ButtonCart onClick={handleCheckout} />
-        </Sections>
-      </div>
-    </Main>
+          <p className="text-xs text-zinc-400">
+            Taxes and shipping not included.
+          </p>
+        </div>
+        <ButtonCart onClick={handleCheckout} />
+      </Sections>
+    </>
   )
 }
 

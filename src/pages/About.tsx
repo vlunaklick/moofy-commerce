@@ -9,32 +9,30 @@ type Props = {}
 
 const About = (props: Props) => {
   return (
-    <Main>
-      <div className="md:max-w-[750px] mx-auto flex flex-col gap-6 w-full">
-        <Sections>
-          <TitleHome title="About" />
-          <BannerAbout />
-          <p className="text-zinc-700 text-sm md:text-base">
-            Welcome to our brand, created by gamers for gamers! As avid gamers
-            ourselves, we understand the challenges of finding and purchasing
-            the right technology. That's why we've made it our mission to make
-            it easier for you to build the perfect gaming PC from scratch. Our
-            selection of high-quality components is carefully curated to provide
-            the best possible gaming experience. If you're in need of a new PC,
-            you've come to the right place! Browse our selection today and start
-            building your dream gaming PC.
-          </p>
-        </Sections>
-        <Sections>
-          <TitleHome title="Contact" />
-          <FormAbout />
-        </Sections>
-        <Sections>
-          <TitleHome title="Newsletter" />
-          <FormNewsletterAbout text={'Email'} />
-        </Sections>
-      </div>
-    </Main>
+    <>
+      <Sections>
+        <TitleHome title="About" />
+        <BannerAbout />
+        <p className="text-zinc-700 text-sm md:text-base">
+          Welcome to our brand, created by gamers for gamers! As avid gamers
+          ourselves, we understand the challenges of finding and purchasing the
+          right technology. That's why we've made it our mission to make it
+          easier for you to build the perfect gaming PC from scratch. Our
+          selection of high-quality components is carefully curated to provide
+          the best possible gaming experience. If you're in need of a new PC,
+          you've come to the right place! Browse our selection today and start
+          building your dream gaming PC.
+        </p>
+      </Sections>
+      <Sections>
+        <TitleHome title="Contact" />
+        <FormAbout />
+      </Sections>
+      <Sections>
+        <TitleHome title="Newsletter" />
+        <FormNewsletterAbout text={'Email'} />
+      </Sections>
+    </>
   )
 }
 

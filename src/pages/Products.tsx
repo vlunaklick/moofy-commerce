@@ -66,66 +66,62 @@ const Products = (props: Props) => {
   }, [id])
 
   return (
-    <Main>
-      <div className="md:max-w-[750px] mx-auto flex flex-col gap-6 w-full">
-        <Sections>
-          <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-bold text-zinc-800">Product</h1>
-            <button
-              onClick={() => handleGoBack()}
-              className="text-xs text-emerald-500"
-            >
-              Go back -{'>'}
-            </button>
-          </div>
-          <div className="flex flex-col md:flex-row justify-start gap-3">
-            <div className="bg-zinc-300 p-4 py-6 rounded-lg flex justify-center h-[400px] relative md:w-[374px]">
-              <p className="absolute bottom-3 font-medium text-zinc-900 bg-zinc-100 rounded-lg p-1 px-3">
-                ${changeDotToCommaAndAddDot(item?.price)}
-              </p>
-              <img
-                className={'object-contain h-full w-full'}
-                src={item?.image}
-                alt={item?.title}
-              />
-            </div>
-            <div className="flex flex-col md:w-[500px] justify-between gap-3">
-              <div className="flex flex-col gap-2">
-                <h2 className="font-bold text-xl text-zinc-800">
-                  {item?.title}
-                </h2>
-                <StockProduct stock={item?.stock} />
-                <p className="text-xs text-zinc-500">{item?.description}</p>
-              </div>
-              <div className="flex gap-2 mx-auto mt-2 md:mx-0">
-                <ButtonProduct
-                  item={item}
-                  text={'Add to cart'}
-                  onClick={handleAdd}
-                  stock={item?.stock}
-                />
-                <ButtonProduct
-                  item={item}
-                  variant="outline"
-                  text="Remove"
-                  onClick={handleRemove}
-                  stock={item?.stock}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 mt-4">
-            <h2 className="text-3xl font-bold text-zinc-800">Other products</h2>
-            <ProductsGrid
-              products={filteredItems}
-              limit={3}
-              responsive={1}
-              use={true}
+    <>
+      <Sections>
+        <div className="flex justify-between items-center">
+          <h1 className="text-3xl font-bold text-zinc-800">Product</h1>
+          <button
+            onClick={() => handleGoBack()}
+            className="text-xs text-emerald-500"
+          >
+            Go back -{'>'}
+          </button>
+        </div>
+        <div className="flex flex-col md:flex-row justify-start gap-3">
+          <div className="bg-zinc-300 p-4 py-6 rounded-lg flex justify-center h-[400px] relative md:w-[374px]">
+            <p className="absolute bottom-3 font-medium text-zinc-900 bg-zinc-100 rounded-lg p-1 px-3">
+              ${changeDotToCommaAndAddDot(item?.price)}
+            </p>
+            <img
+              className={'object-contain h-full w-full'}
+              src={item?.image}
+              alt={item?.title}
             />
           </div>
-        </Sections>
-      </div>
-    </Main>
+          <div className="flex flex-col md:w-[500px] justify-between gap-3">
+            <div className="flex flex-col gap-2">
+              <h2 className="font-bold text-xl text-zinc-800">{item?.title}</h2>
+              <StockProduct stock={item?.stock} />
+              <p className="text-xs text-zinc-500">{item?.description}</p>
+            </div>
+            <div className="flex gap-2 mx-auto mt-2 md:mx-0">
+              <ButtonProduct
+                item={item}
+                text={'Add to cart'}
+                onClick={handleAdd}
+                stock={item?.stock}
+              />
+              <ButtonProduct
+                item={item}
+                variant="outline"
+                text="Remove"
+                onClick={handleRemove}
+                stock={item?.stock}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col gap-2 mt-4">
+          <h2 className="text-3xl font-bold text-zinc-800">Other products</h2>
+          <ProductsGrid
+            products={filteredItems}
+            limit={3}
+            responsive={1}
+            use={true}
+          />
+        </div>
+      </Sections>
+    </>
   )
 }
 

@@ -23,9 +23,9 @@ const ProductCardShop = ({
 
   return (
     <div className="flex gap-2 text-zinc-800">
-      <div className="aspect-square bg-zinc-300 p-2 rounded-2xl flex items-center justify-center max-w-[150px]">
+      <div className="aspect-square bg-zinc-300 p-2 rounded-2xl flex items-center justify-center w-[136px] md:w-[150px]">
         <img
-          className="object-contain w-full h-full aspect-square"
+          className="object-contain w-full h-full"
           src={item?.image}
           alt={item?.title}
         />
