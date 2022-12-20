@@ -1,3 +1,6 @@
+import { useContext } from 'react'
+import { ItemsContext } from '../../../context/ItemsContext'
+
 import { Product } from '../../../types/products'
 
 const classes = {
@@ -26,12 +29,22 @@ const ButtonProduct = ({
   variant = 'border',
   stock = 0,
 }: Props) => {
+  const { cart } = useContext(ItemsContext)
+
+  const isInCart = cart.some(cartItem => cartItem.id === item.id)
+
   return (
     <button
       onClick={() => onClick(item)}
       className={
         classes[
-          stock > 0 ? variant : variant === 'border' ? 'disabled' : variant
+          !isInCart && variant === 'outline'
+            ? 'disabled'
+            : stock > 0
+            ? variant
+            : variant === 'border'
+            ? 'disabled'
+            : variant
         ] +
         ' ' +
         'rounded-xl font-semibold py-2 px-5 cursor-pointer capitalize transition-colors'
