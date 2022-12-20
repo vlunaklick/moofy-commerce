@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
+
 import { Product } from '../../../types/products'
 
 type Props = {

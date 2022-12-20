@@ -1,13 +1,10 @@
-import Main from '../components/layouts/Main'
 import Sections from '../components/layouts/Sections'
 import TitleHome from '../components/sites/home/TitleHome'
 import BannerAbout from '../components/sites/about/BannerAbout'
 import FormNewsletterAbout from '../components/sites/about/FormNewsletterAbout'
 import FormAbout from '../components/sites/about/FormAbout'
 
-type Props = {}
-
-const About = (props: Props) => {
+const About = () => {
   return (
     <>
       <Sections>

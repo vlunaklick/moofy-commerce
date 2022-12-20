@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+
 import { ItemsContext } from '../context/ItemsContext'
 
 import HeaderHome from '../components/sites/home/HeaderHome'
@@ -6,11 +7,8 @@ import Sections from '../components/layouts/Sections'
 import TitleHome from '../components/sites/home/TitleHome'
 import Button from '../components/Button'
 import ProductsGrid from '../components/sites/ProductsGrid'
-import Main from '../components/layouts/Main'
 
-type Props = {}
-
-const Home = (props: Props) => {
+const Home = () => {
   const { items } = useContext(ItemsContext)
 
   const bestSeller = items.reduce((prev, current) =>

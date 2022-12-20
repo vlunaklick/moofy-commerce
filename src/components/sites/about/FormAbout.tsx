@@ -1,9 +1,7 @@
 import Button from '../../Button'
 import useInput from '../../../hooks/useInput'
 
-type Props = {}
-
-const FormAbout = (props: Props) => {
+const FormAbout = () => {
   const {
     value: email,
     handleChangeInput: bindEmail,

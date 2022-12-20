@@ -1,9 +1,7 @@
 import { CgFacebook, CgTwitter } from 'react-icons/cg'
 import { RiLinkedinFill } from 'react-icons/ri'
 
-type Props = {}
-
-function Footer({}: Props) {
+function Footer() {
   return (
     <footer className="w-full py-8 flex flex-col gap-4">
       <span className="w-full border border-zinc-100"></span>

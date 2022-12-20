@@ -1,4 +1,5 @@
 import { Product } from '../../types/products'
+
 import ProductCard from './ProductCard'
 
 type Props = {

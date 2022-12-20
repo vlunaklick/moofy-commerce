@@ -1,34 +1,15 @@
-import { useContext, useEffect, useRef } from 'react'
-import { ItemsContext } from '../../../context/ItemsContext'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { BsFilter } from 'react-icons/bs'
+
+import { ItemsContext } from '../../../context/ItemsContext'
 
 import { useMenu } from '../../../hooks/useMenu'
 
-import { BsFilter } from 'react-icons/bs'
+const DropdownShop = () => {
+  const { categorys } = useContext(ItemsContext)
 
-type Props = {}
-
-const DropdownShop = (props: Props) => {
-  const { items, categorys } = useContext(ItemsContext)
-
-  const { isOpen, handleOpen, close } = useMenu()
-  const ref = useRef<HTMLDivElement>(null)
-
-  // close the menu when the user clicks outside the menu
-  const handleClickOutside = (e: any) => {
-    if (ref.current && !ref.current.contains(e.target)) {
-      close()
-    }
-  }
-
-  // close the menu when the user clicks outside the menu
-
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside, true)
-    return () => {
-      document.removeEventListener('click', handleClickOutside, true)
-    }
-  }, [])
+  const { isOpen, handleOpen, close, ref } = useMenu()
 
   return (
     <div

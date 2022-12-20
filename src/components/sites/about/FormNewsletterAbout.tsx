@@ -1,11 +1,7 @@
 import Button from '../../Button'
 import useInput from '../../../hooks/useInput'
 
-type Props = {
-  text?: string
-}
-
-const FormNewsletterAbout = ({ text = 'placeholder' }: Props) => {
+const FormNewsletterAbout = () => {
   const {
     value: email,
     handleChangeInput: bindEmail,

@@ -1,8 +1,6 @@
 import DropdownShop from './DropdownShop'
 
-type Props = {}
-
-const HeaderShop = (props: Props) => {
+const HeaderShop = () => {
   return (
     <div className="flex flex-col">
       <div className="relative h-full">

@@ -1,32 +1,10 @@
-import { useEffect, useRef } from 'react'
-
 import { Link } from 'react-router-dom'
-import { useMenu } from '../../hooks/useMenu'
-
 import { CgMenu, CgShoppingCart } from 'react-icons/cg'
 
-type Props = {}
+import { useMenu } from '../../hooks/useMenu'
 
-function Nav({}: Props) {
-  const { isOpen, handleOpen, close } = useMenu()
-
-  const ref = useRef<HTMLDivElement>(null)
-
-  // close the menu when the user clicks outside the menu
-  const handleClickOutside = (e: any) => {
-    if (ref.current && !ref.current.contains(e.target)) {
-      close()
-    }
-  }
-
-  // close the menu when the user clicks outside the menu
-
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside, true)
-    return () => {
-      document.removeEventListener('click', handleClickOutside, true)
-    }
-  }, [])
+function Nav() {
+  const { isOpen, handleOpen, close, ref } = useMenu()
 
   return (
     <nav
@@ -44,7 +22,7 @@ function Nav({}: Props) {
           <CgMenu
             onClick={() => handleOpen()}
             className={`md:hidden text-4xl text-zinc-900 cursor-pointer transition-transform ${
-              isOpen ? 'transform rotate-90' : ''
+              isOpen ? 'transform -rotate-90' : ''
             }`}
           />
         </div>

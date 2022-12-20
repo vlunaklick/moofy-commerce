@@ -4,14 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import { ItemsContext } from '../context/ItemsContext'
 import { Product } from '../types/products'
 
-import Main from '../components/layouts/Main'
 import ProductCardShop from '../components/sites/cart/ProductCardShop'
 import Sections from '../components/layouts/Sections'
 import ButtonCart from '../components/sites/cart/ButtonCart'
 
-type Props = {}
-
-const Cart = (props: Props) => {
+const Cart = () => {
   const navigate = useNavigate()
 
   const {
@@ -124,7 +121,7 @@ const Cart = (props: Props) => {
             Taxes and shipping not included.
           </p>
         </div>
-        <ButtonCart onClick={handleCheckout} />
+        <ButtonCart onClick={handleCheckout} text={'Checkout'} />
       </Sections>
     </>
   )

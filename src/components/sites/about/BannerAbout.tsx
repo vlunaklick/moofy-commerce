@@ -1,6 +1,4 @@
-type Props = {}
-
-const BannerAbout = (props: Props) => {
+const BannerAbout = () => {
   return (
     <div className="w-full h-36 rounded-2xl">
       <img

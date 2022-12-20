@@ -1,7 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 
-import Main from './components/layouts/Main'
-
 import Home from './pages/Home'
 import About from './pages/About'
 import Products from './pages/Products'
@@ -9,9 +7,9 @@ import Shop from './pages/Shop'
 import Cart from './pages/Cart'
 import Error from './pages/Error'
 
-type Props = {}
+import Main from './components/layouts/Main'
 
-const App = (props: Props) => {
+const App = () => {
   return (
     <Main>
       <Routes>

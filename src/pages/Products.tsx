@@ -2,16 +2,14 @@ import { useContext, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { ItemsContext } from '../context/ItemsContext'
-import Main from '../components/layouts/Main'
+import { Product } from '../types/products'
+
 import Sections from '../components/layouts/Sections'
 import ButtonProduct from '../components/sites/product/ButtonProduct'
 import StockProduct from '../components/sites/product/StockProduct'
-import { Product } from '../types/products'
 import ProductsGrid from '../components/sites/ProductsGrid'
 
-type Props = {}
-
-const Products = (props: Props) => {
+const Products = () => {
   const navigate = useNavigate()
 
   const { items, addCart, removeCart, removeStock, addStock, cart } =

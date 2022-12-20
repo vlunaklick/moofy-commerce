@@ -1,16 +1,13 @@
 import { useContext, useEffect } from 'react'
-import { ItemsContext } from '../context/ItemsContext'
 import { useParams, useNavigate } from 'react-router-dom'
 
-import Main from '../components/layouts/Main'
-import Sections from '../components/layouts/Sections'
+import { ItemsContext } from '../context/ItemsContext'
+
 import ProductsGrid from '../components/sites/ProductsGrid'
 import PaginationShop from '../components/sites/shop/PaginationShop'
 import HeaderShop from '../components/sites/shop/HeaderShop'
 
-type Props = {}
-
-const Shop = (props: Props) => {
+const Shop = () => {
   const { items, categorys } = useContext(ItemsContext)
   const navigate = useNavigate()
 
