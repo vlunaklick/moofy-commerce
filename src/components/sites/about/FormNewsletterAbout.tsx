@@ -1,7 +1,11 @@
 import Button from '../../Button'
 import useInput from '../../../hooks/useInput'
 
-const FormNewsletterAbout = () => {
+type Props = {
+  placeholder: string
+}
+
+const FormNewsletterAbout = ({ placeholder }: Props) => {
   const {
     value: email,
     handleChangeInput: bindEmail,
@@ -23,7 +27,7 @@ const FormNewsletterAbout = () => {
       <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
         <input
           className="p-2 w-full border outline-none border-zinc-200 text-zinc-800 rounded-md transition-colors hover:border-zinc-300 active:border-zinc-400 focus:border-zinc-400"
-          placeholder={'Email'}
+          placeholder={placeholder}
           type="text"
           value={email}
           onChange={bindEmail}

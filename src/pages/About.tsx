@@ -27,7 +27,7 @@ const About = () => {
       </Sections>
       <Sections>
         <TitleHome title="Newsletter" />
-        <FormNewsletterAbout text={'Email'} />
+        <FormNewsletterAbout placeholder={'Email'} />
       </Sections>
     </>
   )
