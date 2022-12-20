@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Product } from '../../../types/products'
 import ButtonProduct from '../product/ButtonProduct'
 
@@ -23,14 +24,17 @@ const ProductCardShop = ({
 
   return (
     <div className="flex gap-2 text-zinc-800">
-      <div className="aspect-square bg-zinc-300 p-2 rounded-2xl flex items-center justify-center w-[136px] md:w-[150px]">
+      <Link
+        to={`/products/${item?.category[0]}/${item?.id}`}
+        className="aspect-square bg-zinc-300 p-2 rounded-2xl flex items-center justify-center w-[136px] md:w-[150px]"
+      >
         <img
           className="object-contain w-full h-full"
           src={item?.image}
           alt={item?.title}
         />
-      </div>
-      <div className="flex flex-col gap-1 max-w-[230px] md:max-w-none justify-between">
+      </Link>
+      <div className="flex flex-col gap-1 max-w-[230px] sm:max-w-none justify-between">
         <div className="flex flex-col gap-1">
           <h1 className="truncate text-zinc-800 font-bold">{item.title}</h1>
           <p className="font-semibold">
