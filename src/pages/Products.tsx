@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 import { ItemsContext } from '../context/ItemsContext'
 import { Product } from '../types/products'
+import parseMoney from '../utils/parseMoney'
 
 import Sections from '../components/layouts/Sections'
 import ButtonProduct from '../components/sites/product/ButtonProduct'
@@ -50,13 +51,6 @@ const Products = () => {
     navigate(-1)
   }
 
-  const changeDotToCommaAndAddDot = (num: number) => {
-    return num
-      .toString()
-      .replace(/\./g, ',')
-      .replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-  }
-
   useEffect(() => {
     const filtered = items.filter(item => item.id !== Number(id))
     const mixed = filtered.sort(() => Math.random() - 0.5)
@@ -78,7 +72,7 @@ const Products = () => {
         <div className="flex flex-col md:flex-row justify-start gap-3">
           <div className="bg-zinc-300 p-4 py-6 rounded-lg flex justify-center h-[400px] relative md:w-[374px]">
             <p className="absolute bottom-3 font-medium text-zinc-900 bg-zinc-100 rounded-lg p-1 px-3">
-              ${changeDotToCommaAndAddDot(item?.price)}
+              ${parseMoney(item?.price)}
             </p>
             <img
               className={'object-contain h-full w-full'}

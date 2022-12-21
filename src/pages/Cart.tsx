@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { ItemsContext } from '../context/ItemsContext'
 import { Product } from '../types/products'
+import parseMoney from '../utils/parseMoney'
 
 import ProductCardShop from '../components/sites/cart/ProductCardShop'
 import Sections from '../components/layouts/Sections'
@@ -39,13 +40,6 @@ const Cart = () => {
       removeCart(itemFound)
       addStock(itemFound.id)
     }
-  }
-
-  const changeDotToCommaAndAddDot = (num: number) => {
-    return num
-      .toString()
-      .replace(/\./g, ',')
-      .replace(/\B(?=(\d{3})+(?!\d))/g, '.')
   }
 
   const handleCheckout = () => {
@@ -110,7 +104,7 @@ const Cart = () => {
             <p className="text-xl font-semibold">Total:</p>
             <p className="text-xl font-bold">
               $
-              {changeDotToCommaAndAddDot(
+              {parseMoney(
                 cart.reduce((acc, item) => {
                   return acc + item.price * item.quantity
                 }, 0)
