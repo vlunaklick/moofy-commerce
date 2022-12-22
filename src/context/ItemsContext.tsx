@@ -237,7 +237,7 @@ export const ItemProvider = ({ children }: { children: React.ReactNode }) => {
       }
     })
     setCategorys(categoryPrimary)
-  }, [items])
+  }, [])
 
   const addStock = (id: number) => {
     const newItem = items.map(item =>

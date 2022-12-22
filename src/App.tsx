@@ -6,6 +6,7 @@ import Products from './pages/Products'
 import Shop from './pages/Shop'
 import Cart from './pages/Cart'
 import Error from './pages/Error'
+import Categorys from './pages/Categorys'
 
 import Main from './components/layouts/Main'
 
@@ -17,7 +18,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/shop" element={<Navigate to={'/shop/1'} replace />} />
         <Route path="/shop/:pagination" element={<Shop />} />
-        <Route path="/shop/:pagination/:category" element={<Shop />} />
+        <Route path="/shop/:pagination/:category" element={<Categorys />} />
         <Route
           path="/shop/:pagination/:category/:specific"
           element={<Shop />}

@@ -7,11 +7,11 @@ import ProductsGrid from '../components/sites/ProductsGrid'
 import PaginationShop from '../components/sites/shop/PaginationShop'
 import HeaderShop from '../components/sites/shop/HeaderShop'
 
-const Shop = () => {
-  const { items } = useContext(ItemsContext)
+const Categorys = () => {
+  const { items, categorys } = useContext(ItemsContext)
   const navigate = useNavigate()
 
-  const { pagination } = useParams()
+  const { pagination, category, specific } = useParams()
 
   let numberPage
 
@@ -23,8 +23,10 @@ const Shop = () => {
       Number(pagination) < 1
     ) {
       return navigate('/error')
+    } else if (category && !categorys.includes(category)) {
+      return navigate('/error', { replace: true })
     }
-  }, [pagination])
+  }, [pagination, category, specific])
 
   if (pagination) {
     numberPage = parseInt(pagination)
@@ -32,7 +34,31 @@ const Shop = () => {
     numberPage = 1
   }
 
-  let itemsFiltered = items
+  let itemsCategory = items
+
+  if (category) {
+    itemsCategory = items.filter(item => item.category.includes(category))
+  }
+
+  let categorysOn: string[] = []
+
+  useEffect(() => {
+    itemsCategory.forEach(item => {
+      item.category.forEach(category => {
+        if (!categorysOn.includes(category)) {
+          categorysOn.push(category)
+        }
+      })
+    })
+  }, [])
+
+  if (specific) {
+    itemsCategory = itemsCategory.filter(item =>
+      item.category.includes(specific)
+    )
+  }
+
+  let itemsFiltered = itemsCategory
 
   if (pagination) {
     const itemsPerPage = 6
@@ -52,10 +78,15 @@ const Shop = () => {
           <HeaderShop />
           <ProductsGrid products={itemsFiltered} />
         </div>
-        <PaginationShop products={items} page={numberPage} />
+        <PaginationShop
+          products={itemsCategory}
+          page={numberPage}
+          category={category}
+          specific={specific}
+        />
       </div>
     </>
   )
 }
 
-export default Shop
+export default Categorys
