@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 
+import parseMoney from '../../utils/parseMoney'
 import { Product } from '../../types/products'
 
 type Props = {
@@ -9,13 +10,6 @@ type Props = {
 }
 
 const ProductCard = ({ product, hidden, opu }: Props) => {
-  const changeDotToCommaAndAddDot = (num: number) => {
-    return num
-      .toString()
-      .replace(/\./g, ',')
-      .replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-  }
-
   return (
     <div
       className={
@@ -40,9 +34,7 @@ const ProductCard = ({ product, hidden, opu }: Props) => {
         <p className="font-semibold text-xs tetx-zinc-900 truncate">
           {product.title}
         </p>
-        <p className="text-inc-800 text-[11px]">
-          ${changeDotToCommaAndAddDot(product.price)}
-        </p>
+        <p className="text-inc-800 text-[11px]">${parseMoney(product.price)}</p>
       </div>
     </div>
   )
