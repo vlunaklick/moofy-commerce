@@ -23,12 +23,11 @@ const ButtonTop = () => {
   return (
     <motion.button
       onClick={handleScrollToTop}
-      // Bounce effect while button is visible on screen, stop fade out when visible
       animate={view ? 'visible' : 'hidden'}
       variants={{
         visible: {
           opacity: 1,
-          y: 0,
+          scale: 1,
           transition: {
             duration: 0.3,
             yoyo: Infinity,
@@ -37,7 +36,7 @@ const ButtonTop = () => {
         },
         hidden: {
           opacity: 0,
-          y: 20,
+          scale: 0,
           transition: {
             duration: 0.3,
             ease: 'easeInOut',
