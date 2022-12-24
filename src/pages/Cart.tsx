@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
 
 import { ItemsContext } from '../context/ItemsContext'
 import { Product } from '../types/products'
@@ -8,7 +9,6 @@ import parseMoney from '../utils/parseMoney'
 import ProductCardShop from '../components/sites/cart/ProductCardShop'
 import Sections from '../components/layouts/Sections'
 import ButtonCart from '../components/sites/cart/ButtonCart'
-import { AnimatePresence } from 'framer-motion'
 
 const Cart = () => {
   const navigate = useNavigate()
