@@ -8,6 +8,7 @@ import parseMoney from '../utils/parseMoney'
 import ProductCardShop from '../components/sites/cart/ProductCardShop'
 import Sections from '../components/layouts/Sections'
 import ButtonCart from '../components/sites/cart/ButtonCart'
+import { AnimatePresence } from 'framer-motion'
 
 const Cart = () => {
   const navigate = useNavigate()
@@ -63,20 +64,22 @@ const Cart = () => {
 
         {cart.length > 0 && (
           <>
-            {cart.map(item => {
-              let itemFound = items.find(ite => ite.id === item.id)
-              if (itemFound) {
-                return (
-                  <ProductCardShop
-                    key={item.id}
-                    item={itemFound}
-                    quantity={item.quantity}
-                    handleAdd={handleAdd}
-                    handleRemove={handleRemove}
-                  />
-                )
-              }
-            })}
+            <AnimatePresence>
+              {cart.map(item => {
+                let itemFound = items.find(ite => ite.id === item.id)
+                if (itemFound) {
+                  return (
+                    <ProductCardShop
+                      key={item.id}
+                      item={itemFound}
+                      quantity={item.quantity}
+                      handleAdd={handleAdd}
+                      handleRemove={handleRemove}
+                    />
+                  )
+                }
+              })}
+            </AnimatePresence>
             <div className="flex flex-col">
               <div className="flex justify-between text-zinc-800">
                 <p className="text-xl font-semibold">Total:</p>

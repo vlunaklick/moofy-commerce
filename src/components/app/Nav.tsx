@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
-
 import { Link } from 'react-router-dom'
 import { CgMenu, CgShoppingCart } from 'react-icons/cg'
 import { useContext } from 'react'
+import { motion } from 'framer-motion'
 
 import { ItemsContext } from '../../context/ItemsContext'
 import { useMenu } from '../../hooks/useMenu'
+import { AnimatePresence } from 'framer-motion'
 
 function Nav() {
   const [quantity, setQuantity] = useState(0)
@@ -65,34 +66,42 @@ function Nav() {
           </Link>
         </li>
       </ul>
-      {isOpen && (
-        <ul className="flex flex-col md:hidden text-lg text-center absolute bg-zinc-50 w-full top-full z-50 ">
-          <Link to={'/about'}>
-            <li className="p-3 cursor-pointer" onClick={() => close()}>
-              About
-            </li>
-          </Link>
-          <Link to={'/shop/1'}>
-            <li
-              className="p-3 cursor-pointer border-zinc-100 border-t-2"
-              onClick={() => close()}
-            >
-              Shop
-            </li>
-          </Link>
-          <Link to={'/cart'}>
-            <li
-              className="p-3 cursor-pointer border-zinc-100 border-t-2 flex items-center gap-1 w-full justify-center"
-              onClick={() => close()}
-            >
-              <CgShoppingCart className="inline-block text-2xl" />
-              <span className="text-[9px] w-5 h-5 rounded-full bg-zinc-500 text-white aspect-square flex items-center justify-center">
-                {quantity}
-              </span>
-            </li>
-          </Link>
-        </ul>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.ul
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="flex flex-col md:hidden text-lg text-center absolute bg-zinc-50 w-full top-full z-50 "
+          >
+            <Link to={'/about'}>
+              <li className="p-3 cursor-pointer" onClick={() => close()}>
+                About
+              </li>
+            </Link>
+            <Link to={'/shop/1'}>
+              <li
+                className="p-3 cursor-pointer border-zinc-100 border-t-2"
+                onClick={() => close()}
+              >
+                Shop
+              </li>
+            </Link>
+            <Link to={'/cart'}>
+              <li
+                className="p-3 cursor-pointer border-zinc-100 border-t-2 flex items-center gap-1 w-full justify-center"
+                onClick={() => close()}
+              >
+                <CgShoppingCart className="inline-block text-2xl" />
+                <span className="text-[9px] w-5 h-5 rounded-full bg-zinc-500 text-white aspect-square flex items-center justify-center">
+                  {quantity}
+                </span>
+              </li>
+            </Link>
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </nav>
   )
 }

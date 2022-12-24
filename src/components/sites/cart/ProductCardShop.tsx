@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 import parseMoney from '../../../utils/parseMoney'
 
@@ -19,7 +20,13 @@ const ProductCardShop = ({
   quantity,
 }: Props) => {
   return (
-    <div className="flex gap-2 text-zinc-800">
+    <motion.div
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -100 }}
+      transition={{ duration: 0.3 }}
+      className="flex gap-2 text-zinc-800"
+    >
       <Link
         to={`/products/${item?.category[0]}/${item?.id}`}
         className="aspect-square bg-zinc-300 p-2 rounded-2xl flex items-center justify-center w-[136px] md:w-[150px]"
@@ -53,7 +60,7 @@ const ProductCardShop = ({
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
