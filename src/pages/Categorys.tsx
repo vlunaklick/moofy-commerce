@@ -18,13 +18,13 @@ const Categorys = () => {
   useEffect(() => {
     let calcPages = Math.ceil(items.length / 6)
     if (
-      isNaN(Number(pagination)) ||
-      Number(pagination) > calcPages ||
-      Number(pagination) < 1
+      (isNaN(Number(pagination)) ||
+        Number(pagination) > calcPages ||
+        Number(pagination) < 1) &&
+      category &&
+      !categorys.includes(category)
     ) {
-      return navigate('/error')
-    } else if (category && !categorys.includes(category)) {
-      return navigate('/error', { replace: true })
+      return navigate('/not-found')
     }
   }, [pagination, category, specific])
 

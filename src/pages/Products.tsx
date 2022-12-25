@@ -26,7 +26,7 @@ const Products = () => {
       isNaN(Number(id)) &&
       !items.map(item => item.id).includes(Number(id))
     ) {
-      return navigate(`/error`)
+      return navigate(`/not-found`)
     }
   }, [])
 
