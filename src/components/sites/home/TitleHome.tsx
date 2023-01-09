@@ -14,6 +14,7 @@ const TitleHome = ({ title = 'title', message, link = '/' }: Props) => {
       </h3>
       {message && (
         <Link
+          aria-label={message}
           to={link}
           className="text-xs cursor-pointer text-emerald-400 md:text-base"
         >

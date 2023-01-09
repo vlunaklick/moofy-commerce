@@ -7,7 +7,7 @@ function Footer() {
       <span className="w-full border border-zinc-100"></span>
       <div className="flex flex-col gap-2 md:flex-row md:justify-between">
         <div className="md:max-w-[317px] flex flex-col gap-1">
-          <h3 className="font-bold text-xl">Moofy</h3>
+          <p className="font-bold text-xl">Moofy</p>
           <p className="text-zinc-700 text-xs">
             Upgrade your gaming setup with us! We're a top gaming store with a
             wide range of products and a proven track record of success. Shop

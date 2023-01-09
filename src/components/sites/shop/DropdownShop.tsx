@@ -18,7 +18,7 @@ const DropdownShop = () => {
     >
       <div className="flex w-full">
         <button
-          aria-aria-label={'Filter'}
+          aria-label={'Filter'}
           className="flex items-center justify-center w-full h-full p-2 hover:bg-zinc-300"
           onClick={handleOpen}
         >

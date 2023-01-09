@@ -32,6 +32,8 @@ const ProductCardShop = ({
         className="aspect-square bg-zinc-300 p-2 rounded-2xl flex items-center justify-center w-[136px] md:w-[150px]"
       >
         <img
+          decoding='async'
+          loading='lazy'
           className="object-contain w-full h-full"
           src={item?.image}
           alt={item?.title}

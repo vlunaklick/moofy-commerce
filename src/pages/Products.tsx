@@ -71,6 +71,8 @@ const Products = () => {
               ${parseMoney(item?.price)}
             </p>
             <img
+              decoding='async'
+              loading='lazy'
               className={'object-contain h-full w-full'}
               src={item?.image}
               alt={item?.title}

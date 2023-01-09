@@ -24,6 +24,8 @@ const ProductCard = ({ product, hidden, opu }: Props) => {
       >
         <div className="bg-zinc-300 p-4 py-6 rounded-lg flex justify-center h-full">
           <img
+            decoding='async'
+            loading='lazy'
             className="object-contain"
             src={product.image}
             alt={product.title}

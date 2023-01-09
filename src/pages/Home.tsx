@@ -19,8 +19,8 @@ const Home = () => {
     <>
       <Sections>
         <div className="text-2xl gap-1 font-semibold normal-case flex flex-col md:flex-row text-zinc-800 md:text-3xl">
-          <h3>Make your setup</h3>
-          <h3 className="capitalize md:normal-case">a palace</h3>
+          <h2>Make your setup</h2>
+          <h2 className="capitalize md:normal-case">a palace</h2>
         </div>
         <HeaderHome
           image={bestSeller.image}
@@ -43,7 +43,7 @@ const Home = () => {
       <Sections>
         <TitleHome title="Microphones" />
         <HeaderHome
-          image="https://www.audio-technica.com/es-es/media/catalog/product/cache/8dd197211b5cade13ef7fc9815610330/a/t/at2020_01a.png"
+          image="/images/at2020-01a.webp"
           title="Improve your audio quality"
           message="Navigate there ->"
           link="/shop/1/peripherals/microphones"

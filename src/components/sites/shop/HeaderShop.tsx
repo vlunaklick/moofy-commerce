@@ -13,8 +13,11 @@ const HeaderShop = () => {
 
         <div className="h-40 md:h-48">
           <img
+            decoding='async'
+            loading='lazy'
             src="https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             className="object-cover w-full h-full rounded-t-lg"
+            alt="Banner"
           />
         </div>
       </div>
