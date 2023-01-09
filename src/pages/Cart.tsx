@@ -9,6 +9,7 @@ import parseMoney from '../utils/parseMoney'
 import ProductCardShop from '../components/sites/cart/ProductCardShop'
 import Sections from '../components/layouts/Sections'
 import ButtonCart from '../components/sites/cart/ButtonCart'
+import GoBack from '../components/app/GoBack'
 
 const Cart = () => {
   const navigate = useNavigate()
@@ -54,12 +55,7 @@ const Cart = () => {
       <Sections>
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-zinc-800">Cart</h1>
-          <button
-            onClick={() => handleGoBack()}
-            className="text-xs text-emerald-500"
-          >
-            Go back -{'>'}
-          </button>
+          <GoBack onClick={handleGoBack} />
         </div>
 
         {cart.length > 0 && (

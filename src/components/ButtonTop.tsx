@@ -22,6 +22,7 @@ const ButtonTop = () => {
 
   return (
     <motion.button
+      aria-label="Scroll to top"
       onClick={handleScrollToTop}
       animate={view ? 'visible' : 'hidden'}
       variants={{

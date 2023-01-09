@@ -18,6 +18,7 @@ const DropdownShop = () => {
     >
       <div className="flex w-full">
         <button
+          aria-aria-label={'Filter'}
           className="flex items-center justify-center w-full h-full p-2 hover:bg-zinc-300"
           onClick={handleOpen}
         >
@@ -40,6 +41,7 @@ const DropdownShop = () => {
               key={index}
             >
               <button
+                aria-label={category}
                 className="w-full text-center p-2 hover:bg-zinc-200"
                 onClick={() => close()}
               >

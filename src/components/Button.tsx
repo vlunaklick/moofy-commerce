@@ -34,6 +34,7 @@ const Button = ({
         }
       >
         <button
+          arial-label={text}
           className={
             'rounded-2xl font-semibold py-2 px-5 cursor-pointer capitalize transition-colors ' +
             (full ? 'w-full text-center ' : 'w-fit ') +
@@ -50,6 +51,7 @@ const Button = ({
 
   return (
     <button
+      aria-label={text}
       className={
         'rounded-2xl font-semibold py-2 px-5 cursor-pointer capitalize transition-colors ' +
         (full ? 'w-full text-center ' : 'w-fit ') +

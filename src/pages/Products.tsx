@@ -9,6 +9,7 @@ import Sections from '../components/layouts/Sections'
 import ButtonProduct from '../components/sites/product/ButtonProduct'
 import StockProduct from '../components/sites/product/StockProduct'
 import ProductsGrid from '../components/sites/ProductsGrid'
+import GoBack from '../components/app/GoBack'
 
 const Products = () => {
   const navigate = useNavigate()
@@ -62,12 +63,7 @@ const Products = () => {
       <Sections>
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-zinc-800">Product</h1>
-          <button
-            onClick={() => handleGoBack()}
-            className="text-xs text-emerald-500"
-          >
-            Go back -{'>'}
-          </button>
+          <GoBack onClick={handleGoBack} />
         </div>
         <div className="flex flex-col md:flex-row justify-start gap-3">
           <div className="bg-zinc-300 p-4 py-6 rounded-lg flex justify-center h-[400px] relative md:w-[374px]">
