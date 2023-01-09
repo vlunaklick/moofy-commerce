@@ -2,7 +2,7 @@
 
 This is an e-commerce plataform for a fictional company called Moofy. The main goal of this project is to improve my UI/UX skills and to keep on with TypeScript. Also, I wanted to apply framer motion so I could learn more about animations.
 
-## Deploy: [Live View](moofy-commerce.vercel.app) ✨
+## Deploy: [Live View](https://moofy-commerce.vercel.app/) ✨
 
 You can see the live version of the project clicking on the link above.
 
