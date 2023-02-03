@@ -9,7 +9,7 @@ const GoBack = ({ onClick }: Props) => {
       onClick={onClick}
       className="text-xs text-emerald-500"
     >
-      Go back -{'>'}
+      Go back →
     </button>
   )
 }
