@@ -1,6 +1,6 @@
-import { AiOutlineArrowUp } from 'react-icons/ai'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { AiOutlineArrowUp } from 'react-icons/ai'
 
 const ButtonTop = () => {
   const [view, setView] = useState(false)
@@ -12,13 +12,19 @@ const ButtonTop = () => {
     })
   }
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-      setView(true)
-    } else {
-      setView(false)
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        setView(true)
+      } else {
+        setView(false)
+      }
+    })
+
+    return () => {
+      window.removeEventListener('scroll', () => {})
     }
-  })
+  }, [])
 
   return (
     <motion.button
