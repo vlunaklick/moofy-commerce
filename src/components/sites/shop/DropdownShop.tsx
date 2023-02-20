@@ -1,13 +1,12 @@
-import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { BsFilter } from 'react-icons/bs'
 
-import { ItemsContext } from '../../../context/ItemsContext'
+import { useItems } from '../../../context/Items'
 
 import { useMenu } from '../../../hooks/useMenu'
 
 const DropdownShop = () => {
-  const { categorys } = useContext(ItemsContext)
+  const { categorys } = useItems()
 
   const { isOpen, handleOpen, close, ref } = useMenu()
 

@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
-import { ItemsContext } from '../context/Items'
+import { useItems } from '../context/Items'
 import { useCart } from '../context/Cart'
 import { Product } from '../types/products'
 import parseMoney from '../utils/parseMoney'
@@ -17,7 +17,7 @@ const Products = () => {
 
   const { cartItems, addToCart, removeFromCart } = useCart()
 
-  const { items, removeStock, addStock } = useContext(ItemsContext)
+  const { items, removeStock, addStock } = useItems()
 
   const { id } = useParams()
 
@@ -38,15 +38,16 @@ const Products = () => {
   const handleAdd = (item: Product) => {
     if (item.stock > 0) {
       addToCart(item)
-      removeStock(item.id)
+      removeStock(item)
     }
   }
 
   const handleRemove = (item: Product) => {
     const itemFound = cartItems.find(ite => ite.id === item.id)
+
     if (itemFound) {
       removeFromCart(itemFound)
-      addStock(itemFound.id)
+      addStock(itemFound)
     }
   }
 

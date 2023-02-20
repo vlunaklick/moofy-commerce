@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import { ItemsContext } from '../context/ItemsContext'
+import { useItems } from '../context/Items'
 
 import HeaderHome from '../components/sites/home/HeaderHome'
 import Sections from '../components/layouts/Sections'
@@ -9,7 +9,7 @@ import Button from '../components/Button'
 import ProductsGrid from '../components/sites/ProductsGrid'
 
 const Home = () => {
-  const { items } = useContext(ItemsContext)
+  const { items } = useItems()
 
   const bestSeller = items.reduce((prev, current) =>
     prev.sold > current.sold ? prev : current
