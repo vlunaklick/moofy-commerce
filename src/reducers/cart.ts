@@ -1,14 +1,20 @@
-import { ProductsBought } from '../types/productsBought'
-import { Product } from '../types/products'
+import { Product, ProductPurchased } from '../types/products'
 
-export const initialCartState = {
-  items: [] as ProductsBought[],
+export const initialCartState =
+  {
+    items: [] as ProductPurchased[],
+    total: 0,
+    itemsCount: 0,
+  } || JSON.parse(localStorage.getItem('cart') || '{}')
+
+const emptyCartState = {
+  items: [] as ProductPurchased[],
   total: 0,
   itemsCount: 0,
 }
 
 interface CartState {
-  items: ProductsBought[]
+  items: ProductPurchased[]
   total: number
   itemsCount: number
 }
@@ -22,6 +28,10 @@ export const CART_ACTIONS = {
   ADD_ITEM: 'ADD_ITEM',
   REMOVE_ITEM: 'REMOVE_ITEM',
   RESET_CART: 'RESET_CART',
+}
+
+const saveCartToLocalStorage = (cart: CartState) => {
+  localStorage.setItem('cart', JSON.stringify(cart))
 }
 
 export const cartReducer = (state: CartState, action: CartAction) => {
