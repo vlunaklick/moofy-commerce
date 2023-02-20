@@ -1,8 +1,9 @@
-import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 
-import { ItemsContext } from '../context/Items'
+import { useCart } from '../context/Cart'
+import { useItems } from '../context/Items'
+
 import { Product } from '../types/products'
 import parseMoney from '../utils/parseMoney'
 
@@ -10,15 +11,14 @@ import ProductCardShop from '../components/sites/cart/ProductCardShop'
 import Sections from '../components/layouts/Sections'
 import ButtonCart from '../components/sites/cart/ButtonCart'
 import GoBack from '../components/app/GoBack'
-import { useCart } from '../context/Cart'
 
 const Cart = () => {
-  const { cartItems, cartTotal, addToCart, removeFromCart } = useCart()
+  const { cartItems, cartTotal, addToCart, removeFromCart, clearCart } =
+    useCart()
 
   const navigate = useNavigate()
 
-  const { items, removeStock, addStock, clearCart, restartStock } =
-    useContext(ItemsContext)
+  const { items, removeStock, addStock, restartStock } = useItems()
 
   const handleGoBack = () => {
     navigate(-1)
@@ -27,7 +27,7 @@ const Cart = () => {
   const handleAdd = (item: Product) => {
     if (item.stock > 0) {
       addToCart(item)
-      removeStock(item.id)
+      removeStock(item)
     }
   }
 
@@ -36,7 +36,7 @@ const Cart = () => {
 
     if (itemFound) {
       removeFromCart(itemFound)
-      addStock(itemFound.id)
+      addStock(itemFound)
     }
   }
 

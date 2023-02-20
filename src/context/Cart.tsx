@@ -9,6 +9,7 @@ const CartContext = createContext({
   cartCount: initialCartState.itemsCount,
   addToCart: (item: Product) => {},
   removeFromCart: (item: Product) => {},
+  clearCart: () => {},
 })
 
 interface CartProviderProps {
@@ -32,6 +33,26 @@ const CartProvider = ({ children }: CartProviderProps) => {
     })
   }
 
+  const clearCart = () => {
+    const fakeProduct = {
+      id: 1,
+      title: 'fake',
+      brand: 'fake',
+      image: 'fake',
+      price: 1,
+      description: 'fake',
+      category: ['fake'],
+      stock: 1,
+      rating: 1,
+      sold: 1,
+    }
+
+    cartDispatch({
+      type: CART_ACTIONS.CLEAR_CART,
+      payload: fakeProduct,
+    })
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -40,6 +61,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
         cartCount: cartState.itemsCount,
         addToCart,
         removeFromCart,
+        clearCart,
       }}
     >
       {children}

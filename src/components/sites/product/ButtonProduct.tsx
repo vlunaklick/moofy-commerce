@@ -1,5 +1,4 @@
-import { useContext } from 'react'
-import { ItemsContext } from '../../../context/ItemsContext'
+import { useCart } from '../../../context/Cart'
 
 import { Product } from '../../../types/products'
 
@@ -29,9 +28,9 @@ const ButtonProduct = ({
   variant = 'border',
   stock = 0,
 }: Props) => {
-  const { cart } = useContext(ItemsContext)
+  const { cartItems } = useCart()
 
-  const isInCart = cart.some(cartItem => cartItem.id === item.id)
+  const isInCart = cartItems.some(cartItem => cartItem.id === item.id)
 
   return (
     <button

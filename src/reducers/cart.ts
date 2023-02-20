@@ -27,7 +27,7 @@ interface CartAction {
 export const CART_ACTIONS = {
   ADD_ITEM: 'ADD_ITEM',
   REMOVE_ITEM: 'REMOVE_ITEM',
-  RESET_CART: 'RESET_CART',
+  CLEAR_CART: 'CLEAR_CART',
 }
 
 const saveCartToLocalStorage = (cart: CartState) => {
@@ -42,17 +42,21 @@ export const cartReducer = (state: CartState, action: CartAction) => {
       const itemIndex = state.items.findIndex(item => item.id === payload.id)
 
       if (itemIndex === -1) {
-        return {
+        const newState = {
           ...state,
           items: [...state.items, { ...payload, quantity: 1 }],
           total: state.total + payload.price,
           itemsCount: state.itemsCount + 1,
         }
+
+        saveCartToLocalStorage(newState)
+
+        return newState
       }
 
       const itemToUpdate = state.items[itemIndex]
 
-      return {
+      const newState = {
         ...state,
         items: state.items.map(item =>
           item.id === payload.id
@@ -62,6 +66,10 @@ export const cartReducer = (state: CartState, action: CartAction) => {
         total: state.total + itemToUpdate.price,
         itemsCount: state.itemsCount + 1,
       }
+
+      saveCartToLocalStorage(newState)
+
+      return newState
     }
 
     case CART_ACTIONS.REMOVE_ITEM: {
@@ -74,7 +82,7 @@ export const cartReducer = (state: CartState, action: CartAction) => {
       const itemToUpdate = state.items[itemIndex]
 
       if (itemToUpdate.quantity > 1) {
-        return {
+        const newState = {
           ...state,
           items: state.items.map(item =>
             item.id === payload.id
@@ -84,18 +92,27 @@ export const cartReducer = (state: CartState, action: CartAction) => {
           total: state.total - itemToUpdate.price,
           itemsCount: state.itemsCount - 1,
         }
+
+        saveCartToLocalStorage(newState)
+
+        return newState
       }
 
-      return {
+      const newState = {
         ...state,
         items: state.items.filter(item => item.id !== payload.id),
         total: state.total - itemToUpdate.price,
         itemsCount: state.itemsCount - 1,
       }
+
+      saveCartToLocalStorage(newState)
+
+      return newState
     }
 
-    case CART_ACTIONS.RESET_CART: {
-      return initialCartState
+    case CART_ACTIONS.CLEAR_CART: {
+      saveCartToLocalStorage(emptyCartState)
+      return emptyCartState
     }
 
     default: {
