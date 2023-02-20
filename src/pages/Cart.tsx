@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 
-import { ItemsContext } from '../context/ItemsContext'
+import { ItemsContext } from '../context/Items'
 import { Product } from '../types/products'
 import parseMoney from '../utils/parseMoney'
 
@@ -10,20 +10,15 @@ import ProductCardShop from '../components/sites/cart/ProductCardShop'
 import Sections from '../components/layouts/Sections'
 import ButtonCart from '../components/sites/cart/ButtonCart'
 import GoBack from '../components/app/GoBack'
+import { useCart } from '../context/Cart'
 
 const Cart = () => {
+  const { cartItems, cartTotal, addToCart, removeFromCart } = useCart()
+
   const navigate = useNavigate()
 
-  const {
-    items,
-    addCart,
-    removeCart,
-    removeStock,
-    addStock,
-    cart,
-    clearCart,
-    restartStock,
-  } = useContext(ItemsContext)
+  const { items, removeStock, addStock, clearCart, restartStock } =
+    useContext(ItemsContext)
 
   const handleGoBack = () => {
     navigate(-1)
@@ -31,15 +26,16 @@ const Cart = () => {
 
   const handleAdd = (item: Product) => {
     if (item.stock > 0) {
-      addCart(item)
+      addToCart(item)
       removeStock(item.id)
     }
   }
 
   const handleRemove = (item: Product) => {
-    const itemFound = cart.find(ite => ite.id === item.id)
+    const itemFound = cartItems.find(ite => ite.id === item.id)
+
     if (itemFound) {
-      removeCart(itemFound)
+      removeFromCart(itemFound)
       addStock(itemFound.id)
     }
   }
@@ -58,10 +54,10 @@ const Cart = () => {
           <GoBack onClick={handleGoBack} />
         </div>
 
-        {cart.length > 0 && (
+        {cartItems.length > 0 && (
           <>
             <AnimatePresence>
-              {cart.map(item => {
+              {cartItems.map(item => {
                 let itemFound = items.find(ite => ite.id === item.id)
                 if (itemFound) {
                   return (
@@ -79,14 +75,7 @@ const Cart = () => {
             <div className="flex flex-col">
               <div className="flex justify-between text-zinc-800">
                 <p className="text-xl font-semibold">Total:</p>
-                <p className="text-xl font-bold">
-                  $
-                  {parseMoney(
-                    cart.reduce((acc, item) => {
-                      return acc + item.price * item.quantity
-                    }, 0)
-                  )}
-                </p>
+                <p className="text-xl font-bold">${parseMoney(cartTotal)}</p>
               </div>
               <p className="text-xs text-zinc-400">
                 Taxes and shipping not included.
@@ -95,7 +84,7 @@ const Cart = () => {
             <ButtonCart onClick={handleCheckout} text={'Checkout'} />
           </>
         )}
-        {cart.length === 0 && (
+        {cartItems.length === 0 && (
           <div className="flex flex-col gap-4 items-center justify-center h-full w-full">
             <h1 className="md:text-4xl text-2xl font-bold text-zinc-800">
               Your cart is empty

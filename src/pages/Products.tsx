@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
-import { ItemsContext } from '../context/ItemsContext'
+import { ItemsContext } from '../context/Items'
+import { useCart } from '../context/Cart'
 import { Product } from '../types/products'
 import parseMoney from '../utils/parseMoney'
 
@@ -14,8 +15,9 @@ import GoBack from '../components/app/GoBack'
 const Products = () => {
   const navigate = useNavigate()
 
-  const { items, addCart, removeCart, removeStock, addStock, cart } =
-    useContext(ItemsContext)
+  const { cartItems, addToCart, removeFromCart } = useCart()
+
+  const { items, removeStock, addStock } = useContext(ItemsContext)
 
   const { id } = useParams()
 
@@ -35,15 +37,15 @@ const Products = () => {
 
   const handleAdd = (item: Product) => {
     if (item.stock > 0) {
-      addCart(item)
+      addToCart(item)
       removeStock(item.id)
     }
   }
 
   const handleRemove = (item: Product) => {
-    const itemFound = cart.find(ite => ite.id === item.id)
+    const itemFound = cartItems.find(ite => ite.id === item.id)
     if (itemFound) {
-      removeCart(itemFound)
+      removeFromCart(itemFound)
       addStock(itemFound.id)
     }
   }
@@ -71,8 +73,8 @@ const Products = () => {
               ${parseMoney(item?.price)}
             </p>
             <img
-              decoding='async'
-              loading='lazy'
+              decoding="async"
+              loading="lazy"
               className={'object-contain h-full w-full'}
               src={item?.image}
               alt={item?.title}

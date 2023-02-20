@@ -1,27 +1,15 @@
-import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { CgMenu, CgShoppingCart } from 'react-icons/cg'
-import { useContext } from 'react'
 import { motion } from 'framer-motion'
 
-import { ItemsContext } from '../../context/ItemsContext'
 import { useMenu } from '../../hooks/useMenu'
 import { AnimatePresence } from 'framer-motion'
+import { useCart } from '../../context/Cart'
 
 function Nav() {
-  const [quantity, setQuantity] = useState(0)
-
-  const { cart } = useContext(ItemsContext)
+  const { cartCount } = useCart()
 
   const { isOpen, handleOpen, close, ref } = useMenu()
-
-  useEffect(() => {
-    let quantity = 0
-    cart.forEach(item => {
-      quantity += item.quantity
-    })
-    setQuantity(quantity)
-  }, [cart])
 
   return (
     <nav
@@ -61,7 +49,7 @@ function Nav() {
           <Link to={'/cart'} className="flex justify-between w-full relative">
             <CgShoppingCart className="inline-block text-2xl" />
             <span className="text-[8px] w-4 rounded-full bg-zinc-500 text-white aspect-square flex items-center justify-center absolute -right-[5px] -top-1">
-              {quantity}
+              {cartCount}
             </span>
           </Link>
         </li>
@@ -95,7 +83,7 @@ function Nav() {
               >
                 <CgShoppingCart className="inline-block text-2xl" />
                 <span className="text-[9px] w-5 h-5 rounded-full bg-zinc-500 text-white aspect-square flex items-center justify-center">
-                  {quantity}
+                  {cartCount}
                 </span>
               </li>
             </Link>
