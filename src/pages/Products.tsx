@@ -13,11 +13,10 @@ import ProductsGrid from '../components/sites/ProductsGrid'
 import GoBack from '../components/app/GoBack'
 
 const Products = () => {
-  const navigate = useNavigate()
-
+  const { items, removeStock, addStock } = useItems()
   const { cartItems, addToCart, removeFromCart } = useCart()
 
-  const { items, removeStock, addStock } = useItems()
+  const navigate = useNavigate()
 
   const { id } = useParams()
 
