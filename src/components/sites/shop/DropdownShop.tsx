@@ -13,41 +13,33 @@ const DropdownShop = () => {
   return (
     <div
       ref={ref}
-      className="flex items-center bg-zinc-200 text-zinc-700 flex-col relative"
+      className="flex items-center bg-zinc-200 text-zinc-700 flex-col md:overflow-x-auto relative"
     >
-      <div className="flex w-full">
-        <button
-          aria-label={'Filter'}
-          className="flex items-center justify-center w-full h-full p-2 hover:bg-zinc-300"
-          onClick={handleOpen}
-        >
-          <BsFilter className="text-2xl md:hidden" />
-          <p className="hidden md:block font-bold">Filter</p>
-        </button>
-      </div>
+      <button
+        aria-label={'Filter'}
+        className="flex items-center justify-center w-full h-full p-2 hover:bg-zinc-300 md:hidden"
+        onClick={handleOpen}
+      >
+        <BsFilter className="text-2xl md:hidden" />
+        <p className="hidden md:block font-bold">Filter</p>
+      </button>
       <div
         className={
-          'bg-zinc-100 w-full transition-all ease-out duration-500 absolute top-full' +
-          ' ' +
-          (isOpen ? 'h-max' : 'h-0')
+          (isOpen ? '' : 'hidden ') +
+          'bg-zinc-100 w-full transition-all ease-out duration-500 absolute top-full flex flex-col md:flex-row md:static md:min-w-full md:flex'
         }
       >
-        {isOpen &&
-          categorys.map((category, index) => (
-            <Link
-              className="w-full h-full text-center"
-              to={`/shop/1/${category}`}
-              key={index}
-            >
-              <button
-                aria-label={category}
-                className="w-full text-center p-2 hover:bg-zinc-200"
-                onClick={() => close()}
-              >
-                {removeAndCapitalize(category)}
-              </button>
-            </Link>
-          ))}
+        {categorys.map((category, index) => (
+          <Link
+            className="w-full h-full text-center p-2 hover:bg-zinc-200 md:min-w-[145px] flex-1"
+            to={`/shop/1/${category}`}
+            key={index}
+            onClick={() => close()}
+            aria-label={category}
+          >
+            {removeAndCapitalize(category)}
+          </Link>
+        ))}
       </div>
     </div>
   )
