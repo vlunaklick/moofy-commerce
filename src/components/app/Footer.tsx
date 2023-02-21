@@ -1,5 +1,4 @@
-import { CgFacebook, CgTwitter } from 'react-icons/cg'
-import { RiLinkedinFill } from 'react-icons/ri'
+import { LinkedIn, Facebook, Twitter } from '../icons/socials'
 
 function Footer() {
   return (
@@ -40,14 +39,14 @@ function Footer() {
             <li className="hidden md:block hover:text-zinc-900 cursor-pointer">
               Facebook
             </li>
-            <li className="md:hidden block hover:text-zinc-900 cursor-pointer">
-              <RiLinkedinFill className="text-2xl" />
+            <li className="md:hidden block hover:fill-zinc-900 fill-zinc-700 cursor-pointer">
+              <LinkedIn className="h-4" />
             </li>
-            <li className="md:hidden block hover:text-zinc-900 cursor-pointer">
-              <CgTwitter className="text-2xl" />
+            <li className="md:hidden block hover:fill-zinc-900 fill-zinc-700 cursor-pointer">
+              <Twitter className="h-4" />
             </li>
-            <li className="md:hidden block hover:text-zinc-900 cursor-pointer">
-              <CgFacebook className="text-2xl" />
+            <li className="md:hidden block hover:fill-zinc-900 fill-zinc-700 cursor-pointer">
+              <Facebook className="h-4" />
             </li>
           </ul>
         </div>

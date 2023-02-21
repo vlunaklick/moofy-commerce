@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
-import { BsFilter } from 'react-icons/bs'
 
 import { useItems } from '../../../context/Items'
 
 import { useMenu } from '../../../hooks/useMenu'
+
+import { Filter } from '../../icons/Filter'
 
 const DropdownShop = () => {
   const { categorys } = useItems()
@@ -20,7 +21,7 @@ const DropdownShop = () => {
         className="flex items-center justify-center w-full h-full p-2 hover:bg-zinc-300 md:hidden"
         onClick={handleOpen}
       >
-        <BsFilter className="text-2xl md:hidden" />
+        <Filter className="h-6 w-6 md:hidden" />
         <p className="hidden md:block font-bold">Filter</p>
       </button>
       <div

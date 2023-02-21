@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 
 import { Product } from '../../../types/products'
+
+import { ArrowLeft } from '../../icons/ArrowLeft'
+import { ArrowRight } from '../../icons/ArrowRight'
 
 type Props = {
   products: Product[]
@@ -16,7 +18,7 @@ const PaginationShop = ({ products, page, category, specific }: Props) => {
   return (
     <div className="flex items-center w-full gap-6 justify-center mt-4">
       <Link
-        aria-label='Previous page'
+        aria-label="Previous page"
         className={page === 1 ? 'cursor-default' : 'cursor-pointer'}
         to={
           page === 1
@@ -28,12 +30,12 @@ const PaginationShop = ({ products, page, category, specific }: Props) => {
               }`
         }
       >
-        <MdKeyboardArrowLeft
+        <ArrowLeft
           className={
-            'text-2xl ' +
+            'h-6 w-6 ' +
             (page === 1
-              ? 'text-zinc-200'
-              : 'text-zinc-700 hover:text-zinc-800 cursor-pointer')
+              ? 'fill-zinc-200'
+              : 'fill-zinc-700 hover:fill-zinc-800 cursor-pointer')
           }
         />
       </Link>
@@ -41,7 +43,7 @@ const PaginationShop = ({ products, page, category, specific }: Props) => {
         <p>{page || page === 1}</p>
       </div>
       <Link
-        aria-label='Next page'
+        aria-label="Next page"
         className={page === calcPages ? 'cursor-default' : 'cursor-pointer'}
         to={
           page === calcPages
@@ -53,12 +55,12 @@ const PaginationShop = ({ products, page, category, specific }: Props) => {
               }`
         }
       >
-        <MdKeyboardArrowRight
+        <ArrowRight
           className={
-            'text-2xl ' +
+            'h-6 w-6 ' +
             (page === calcPages
-              ? 'text-zinc-200'
-              : 'text-zinc-700 hover:text-zinc-800 cursor-pointer')
+              ? 'fill-zinc-200'
+              : 'fill-zinc-700 hover:fill-zinc-800 cursor-pointer')
           }
         />
       </Link>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { AiOutlineArrowUp } from 'react-icons/ai'
+
+import { ArrowUp } from './icons/ArrowUp'
 
 const ButtonTop = () => {
   const [view, setView] = useState(false)
@@ -51,10 +52,10 @@ const ButtonTop = () => {
         },
       }}
       className={
-        'fixed z-10 p-3 bg-zinc-100 rounded-full shadow-md bottom-10 right-10'
+        'fixed z-10 p-2 bg-zinc-100 rounded-full shadow-md bottom-10 right-10'
       }
     >
-      <AiOutlineArrowUp className="text-zinc-800" />
+      <ArrowUp className="w-5 h-5 text-zinc-800" />
     </motion.button>
   )
 }

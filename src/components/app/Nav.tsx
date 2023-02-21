@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
-import { CgMenu, CgShoppingCart } from 'react-icons/cg'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { useMenu } from '../../hooks/useMenu'
-import { AnimatePresence } from 'framer-motion'
 import { useCart } from '../../context/Cart'
+
+import { Menu } from '../icons/Menu'
+import { Cart } from '../icons/Cart'
 
 function Nav() {
   const { cartCount } = useCart()
@@ -24,9 +25,9 @@ function Nav() {
           </h1>
         </Link>
         <div>
-          <CgMenu
+          <Menu
             onClick={() => handleOpen()}
-            className={`md:hidden text-4xl text-zinc-900 cursor-pointer transition-transform ${
+            className={`md:hidden h-9 fill-zinc-900 cursor-pointer transition-transform ${
               isOpen ? 'transform -rotate-90' : ''
             }`}
           />
@@ -47,7 +48,7 @@ function Nav() {
         </li>
         <li className="cursor-pointer">
           <Link to={'/cart'} className="flex justify-between w-full relative">
-            <CgShoppingCart className="inline-block text-2xl" />
+            <Cart className="inline-block h-6" />
             <span className="text-[8px] w-4 rounded-full bg-zinc-500 text-white aspect-square flex items-center justify-center absolute -right-[5px] -top-1">
               {cartCount}
             </span>
@@ -81,7 +82,7 @@ function Nav() {
                 className="p-3 cursor-pointer border-zinc-100 border-t-2 flex items-center gap-1 w-full justify-center"
                 onClick={() => close()}
               >
-                <CgShoppingCart className="inline-block text-2xl" />
+                <Cart className="inline-block h-6" />
                 <span className="text-[9px] w-5 h-5 rounded-full bg-zinc-500 text-white aspect-square flex items-center justify-center">
                   {cartCount}
                 </span>
