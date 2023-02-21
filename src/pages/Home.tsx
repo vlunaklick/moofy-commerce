@@ -24,7 +24,7 @@ const Home = () => {
         </div>
         <HeaderHome
           image={bestSeller.image}
-          message="Order now ->"
+          message="Order now →"
           topText="Best seller"
           title={bestSeller.title}
           link={`/products/${bestSeller.category[0]}/${bestSeller.id}`}
@@ -45,7 +45,7 @@ const Home = () => {
         <HeaderHome
           image="/images/at2020-01a.webp"
           title="Improve your audio quality"
-          message="Navigate there ->"
+          message="See more →"
           link="/shop/1/peripherals/microphones"
         />
         <ProductsGrid
