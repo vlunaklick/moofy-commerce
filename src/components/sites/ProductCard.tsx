@@ -20,12 +20,12 @@ const ProductCard = ({ product, hidden, opu }: Props) => {
     >
       <Link
         className="h-full max-h-52 md:max-h-72"
-        to={`/products/${product.category[0]}/${product.id}`}
+        to={`/shop/${product.category[0]}/${product.id}`}
       >
         <div className="bg-zinc-300 p-4 py-6 rounded-lg flex justify-center h-full">
           <img
-            decoding='async'
-            loading='lazy'
+            decoding="async"
+            loading="lazy"
             className="object-contain"
             src={product.image}
             alt={product.title}

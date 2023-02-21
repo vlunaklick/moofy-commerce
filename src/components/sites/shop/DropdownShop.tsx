@@ -33,7 +33,7 @@ const DropdownShop = () => {
         {categorys.map((category, index) => (
           <Link
             className="w-full h-full text-center p-2 hover:bg-zinc-200 md:min-w-[145px] flex-1"
-            to={`/shop/1/${category}`}
+            to={`/shop/${category}`}
             key={index}
             onClick={() => close()}
             aria-label={category}

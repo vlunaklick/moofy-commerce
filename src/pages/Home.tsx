@@ -1,5 +1,3 @@
-import { useContext } from 'react'
-
 import { useItems } from '../context/Items'
 
 import HeaderHome from '../components/sites/home/HeaderHome'
@@ -31,13 +29,13 @@ const Home = () => {
         />
       </Sections>
       <Sections>
-        <TitleHome title="Our products" message="See more" link="/shop/1" />
+        <TitleHome title="Our products" message="See more" link="/shop" />
         <ProductsGrid products={items} limit={6} />
         <Button
           center={true}
           variant={'emerald'}
           text={'Shop now'}
-          link={'/shop/1'}
+          link={'/shop'}
         />
       </Sections>
       <Sections>
@@ -46,7 +44,7 @@ const Home = () => {
           image="/images/at2020-01a.webp"
           title="Improve your audio quality"
           message="See more →"
-          link="/shop/1/peripherals/microphones"
+          link="/shop/peripherals/microphones"
         />
         <ProductsGrid
           products={items}
@@ -59,7 +57,7 @@ const Home = () => {
           center={true}
           variant={'emerald'}
           text={'See more'}
-          link={'/shop/1/peripherals/microphones'}
+          link={'/shop/peripherals/microphones'}
         />
       </Sections>
     </>

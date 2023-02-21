@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 import Home from './pages/Home'
 import About from './pages/About'
@@ -14,16 +14,15 @@ const App = () => {
   return (
     <Main>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/shop" element={<Navigate to={'/shop/1'} replace />} />
-        <Route path="/shop/:pagination" element={<Shop />} />
-        <Route path="/shop/:pagination/:category" element={<Categorys />} />
-        <Route
-          path="/shop/:pagination/:category/:specific"
-          element={<Shop />}
-        />
-        <Route path="/products/:category/:id" element={<Products />} />
+        <Route path="/">
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+        </Route>
+        <Route path="/shop">
+          <Route index element={<Shop />} />
+          <Route path=":category" element={<Categorys />} />
+          <Route path=":category/:id" element={<Products />} />
+        </Route>
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<Error />} />
       </Routes>

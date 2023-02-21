@@ -9,7 +9,7 @@ const Error = () => {
         className="text-emerald-500 hover:text-emerald-700 transition-colors duration-300"
         to={'/'}
       >
-        Back to home -{'>'}
+        Back to home →
       </Link>
     </div>
   )

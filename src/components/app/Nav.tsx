@@ -41,7 +41,7 @@ function Nav() {
           </Link>
         </li>
         <li className="cursor-pointer group">
-          <Link to={'/shop/1'}>
+          <Link to={'/shop'}>
             Shop
             <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-zinc-900"></span>
           </Link>
@@ -69,7 +69,7 @@ function Nav() {
                 About
               </li>
             </Link>
-            <Link to={'/shop/1'}>
+            <Link to={'/shop'}>
               <li
                 className="p-3 cursor-pointer border-zinc-100 border-t-2"
                 onClick={() => close()}
