@@ -1,5 +1,3 @@
-import { useCart } from '../../../context/Cart'
-
 import { Product } from '../../../types/products'
 
 const classes = {
@@ -19,6 +17,7 @@ type Props = {
   text?: string
   variant?: 'border' | 'danger' | 'outline'
   stock?: number
+  isItemInCart?: boolean
 }
 
 const ButtonProduct = ({
@@ -27,17 +26,14 @@ const ButtonProduct = ({
   text = 'Button',
   variant = 'border',
   stock = 0,
+  isItemInCart = false,
 }: Props) => {
-  const { cartItems } = useCart()
-
-  const isInCart = cartItems.some(cartItem => cartItem.id === item.id)
-
   return (
     <button
       onClick={() => onClick(item)}
       className={
         classes[
-          !isInCart && variant === 'outline'
+          !isItemInCart && variant === 'outline'
             ? 'disabled'
             : stock > 0
             ? variant

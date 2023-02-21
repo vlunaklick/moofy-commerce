@@ -61,6 +61,8 @@ const Products = () => {
     setFilteredItems(mixed)
   }, [id])
 
+  const isItemInCart = cartItems.some(cartItem => cartItem.id === item.id)
+
   return (
     <>
       <Sections>
@@ -93,6 +95,7 @@ const Products = () => {
                 text={'Add to cart'}
                 onClick={handleAdd}
                 stock={item?.stock}
+                isItemInCart={isItemInCart}
               />
               <ButtonProduct
                 item={item}
@@ -100,6 +103,7 @@ const Products = () => {
                 text="Remove"
                 onClick={handleRemove}
                 stock={item?.stock}
+                isItemInCart={isItemInCart}
               />
             </div>
           </div>
